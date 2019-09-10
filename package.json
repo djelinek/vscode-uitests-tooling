@@ -15,9 +15,10 @@
   "keywords": [
     "utils",
     "uitests",
-    "red hat",
+    "redhat",
     "camel-tooling",
-    "tooling"
+    "tooling",
+    "vscode-extension-tester"
   ],
   "maintainers": [
     {

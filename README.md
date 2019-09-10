@@ -1,4 +1,4 @@
-[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)]()
+[![npm version](https://badge.fury.io/js/vscode-uitests-tooling.svg?style=flat)](https://badge.fury.io/js/vscode-uitests-tooling) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/djelinek/vscode-uitests-tooling/issues) [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg?style=flat)](https://github.com/djelinek/vscode-uitests-tooling/blob/master/LICENSE)
 
 # vscode-uitests-tooling
 UI Tests Tooling for VS Code extensions is a package built on [VS Code Extension Tester](https://github.com/jrichter1/vscode-extension-tester). It provides more specific functions, wait conditions, sets of features and others for testing of VS Code extensions.
