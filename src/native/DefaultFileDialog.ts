@@ -2,6 +2,8 @@ import { TitleBar, DialogHandler } from 'vscode-extension-tester';
 
 /**
  * Handles File Dialogs 
+ * 
+ * @author djelinek
  */
 export class DefaultFileDialog {
   

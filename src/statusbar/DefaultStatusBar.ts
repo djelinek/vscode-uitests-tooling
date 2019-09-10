@@ -2,6 +2,8 @@ import { StatusBar, By } from "vscode-extension-tester";
 
 /**
  * Page object for the status bar at the bottom
+ * 
+ * @author djelinek
  */
 export class DefaultStatusBar extends StatusBar {
 

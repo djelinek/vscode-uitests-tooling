@@ -1,6 +1,11 @@
 import { BottomBarPanel } from "vscode-extension-tester";
 import { DefaultWait } from '../conditions/DefaultWait';
 
+/**
+ * Class containing wait until conditions
+ * 
+ * @author mlorinc
+ */
 export class WaitUntil {
 
     /**

@@ -1,5 +1,7 @@
 /**
  * Class containing all basic wait conditions
+ * 
+ * @author djelinek
  */
 export class DefaultWait {
 
