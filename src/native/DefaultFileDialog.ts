@@ -3,7 +3,7 @@ import { TitleBar, DialogHandler } from 'vscode-extension-tester';
 /**
  * Handles File Dialogs 
  */
-export class DefaultFileDialog extends DialogHandler {
+export class DefaultFileDialog {
   
   /**
    * Open file with specified 'path' via Open File Dialog (File > Open File...)
@@ -12,7 +12,7 @@ export class DefaultFileDialog extends DialogHandler {
    */
   async openFile(path: string): Promise<void> {
     await new TitleBar().select('File', 'Open File...');
-    this.open(path);
+    await this.open(path);
   }
 
   /**
@@ -22,7 +22,7 @@ export class DefaultFileDialog extends DialogHandler {
    */
   async openFolder(path: string): Promise<void> {
     await new TitleBar().select('File', 'Open Folder...');
-    this.open(path);
+    await this.open(path);
   }
 
   private async open(path: string): Promise<void> {

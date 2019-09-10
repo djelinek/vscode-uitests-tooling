@@ -11,7 +11,6 @@ export class DefaultStatusBar extends StatusBar {
      */
     async getItemByID(id: string): Promise<String> {
         return await new StatusBar().findElement(By.id(id)).getText();
-
     }
 
     /**
@@ -20,6 +19,5 @@ export class DefaultStatusBar extends StatusBar {
      */
     async getLSPSupport(): Promise<String> {
         return await new StatusBar().findElement(By.id('redhat.vscode-apache-camel')).getText();
-
     }
 }
