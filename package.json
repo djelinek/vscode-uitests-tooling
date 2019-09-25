@@ -45,6 +45,7 @@
     "@types/mocha": "^5.2.7",
     "@types/node": "^12.7.3",
     "mocha": "^6.2.0",
+    "ts-essentials": "^3.0.2",
     "typescript": "^3.5.1",
     "vscode-extension-tester": "2.0.0"
   },
