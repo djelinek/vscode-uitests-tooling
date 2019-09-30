@@ -43,17 +43,17 @@ export class WaitUntil {
      * Waits until invoked Content Assistant has items
      * 
      * @param contentAssistant ContentAssist obj
+     * @param timePeriod Timeout in ms
      */
     async assistHasItems(contentAssistant: ContentAssist, timePeriod: number) {
-        await this.driver.wait(() => {
-            return async () => {
+        await this.driver.wait(
+            async function() {
                 const items = await contentAssistant.getItems();
                 if (items.length > 0) {
                     return true;
                 }
                 return false;
-            }
-        }, timePeriod);
+            }, timePeriod);
     }
 
 }
