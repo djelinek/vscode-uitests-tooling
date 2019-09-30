@@ -1,4 +1,4 @@
-import { BottomBarPanel } from "vscode-extension-tester";
+import { BottomBarPanel, ContentAssist, VSBrowser, WebDriver } from "vscode-extension-tester";
 import { DefaultWait } from '../conditions/DefaultWait';
 
 /**
@@ -7,6 +7,12 @@ import { DefaultWait } from '../conditions/DefaultWait';
  * @author mlorinc
  */
 export class WaitUntil {
+
+    driver: WebDriver;
+
+    constructor() {
+        this.driver = VSBrowser.instance.driver;
+    }
 
     /**
      * Waits until predicate returns true
@@ -25,11 +31,29 @@ export class WaitUntil {
      * 
      * @param str 
      */
-    async untiOutputContains(str: string) {
+    async outputContains(str: string) {
         return this.until(async function () {
             const output = await new BottomBarPanel().openOutputView();
             let outText = await output.getText();
             return outText !== null && outText.includes(str);
         });
     }
+
+    /**
+     * Waits until invoked Content Assistant has items
+     * 
+     * @param contentAssistant ContentAssist obj
+     */
+    async assistHasItems(contentAssistant: ContentAssist, timePeriod: number) {
+        await this.driver.wait(() => {
+            return async () => {
+                const items = await contentAssistant.getItems();
+                if (items.length > 0) {
+                    return true;
+                }
+                return false;
+            }
+        }, timePeriod);
+    }
+
 }
