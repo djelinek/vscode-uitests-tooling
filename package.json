@@ -39,12 +39,19 @@
     "prepack": "npm run build",
     "compile": "tsc -p ./",
     "build": "tsc",
-    "clean": "rm -rf out node_modules *.tgz package-lock.json"
+    "clean": "rm -rf out node_modules *.tgz package-lock.json",
+    "lint": "tslint -c tslint.json 'src/**/*.ts'"
   },
   "devDependencies": {
+    "@types/chai": "^4.2.3",
+    "@types/fs-extra": "^8.0.1",
     "@types/mocha": "^5.2.7",
     "@types/node": "^12.7.3",
+    "chai": "^4.2.0",
+    "fs-extra": "^8.1.0",
     "mocha": "^6.2.0",
+    "ts-essentials": "^3.0.2",
+    "tslint": "^5.20.0",
     "typescript": "^3.5.1",
     "vscode-extension-tester": "1.3.0"
   },
