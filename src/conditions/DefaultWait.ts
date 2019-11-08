@@ -3,7 +3,17 @@
  * 
  * @author djelinek
  */
-export class DefaultWait {
+
+enum TimePeriod {
+	DEFAULT = 5000,
+	SHORT = 1500,
+	MEDIUM = 3000,
+	LONG = 15000,
+	VERY_LONG = 30000
+}
+class DefaultWait {
+
+	public static readonly TimePeriod = TimePeriod;
 
 	/**
  	* Suspends thread if used with await keyword. When promise is used instead, it has similar
@@ -11,7 +21,10 @@ export class DefaultWait {
  	* 
  	* @param ms sleep time
  	*/
-	sleep(ms: number): Promise<NodeJS.Timeout> {
+	public static sleep(ms: number): Promise<NodeJS.Timeout> {
 		return new Promise(resolve => setTimeout(resolve, ms));
 	}
 }
+
+export { DefaultWait };
+export default DefaultWait;
