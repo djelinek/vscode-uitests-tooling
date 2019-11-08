@@ -8,8 +8,13 @@
       ],
       "sourceMap": true,
       "rootDir": "src",
+      "forceConsistentCasingInFileNames": true,
       "strict": true,
       "noUnusedLocals": true,
+      "noImplicitReturns": true,
+      "noImplicitAny": true,
+      "strictNullChecks": true,
+      "noUnusedParameters": true,
       "experimentalDecorators": true,
       "resolveJsonModule": true,
       "declaration": true
