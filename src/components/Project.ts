@@ -1,20 +1,20 @@
 import * as fs from "fs";
 import * as fsExtra from "fs-extra";
-import { TitleBar } from "vscode-extension-tester";
-import DefaultFileDialog from "../native/DefaultFileDialog";
+import Dialog from "./Dialog";
 
 /**
  * Project class represents VS code workspace. 
  * @author Marian Lorinc <mlorinc@redhat.com>
  */
 class Project {
+	
 	private _isOpen: boolean;
 
 	/**
 	 * Create new object with path. The object does not create project in file system.
 	 * @param _path of project
 	 */
-	constructor(private _path: string) {
+	public constructor(private _path: string) {
 		this._isOpen = false;
 	}
 
@@ -60,7 +60,7 @@ class Project {
 			return;
 		}
 		this._isOpen = true;
-		await new DefaultFileDialog().openFolder(this._path);
+		await Dialog.openFolder(this._path);
 	}
 
 	/**
@@ -71,8 +71,7 @@ class Project {
 			return;
 		}
 		this._isOpen = false;
-		const titleBar = new TitleBar();
-		await titleBar.select("File", "Close Folder");
+		await Dialog.closeFolder();
 	}
 
 	/**

@@ -255,6 +255,5 @@ abstract class AsyncProcess {
 	}
 }
 
-
 export { AsyncProcess, isRunning };
 export default AsyncProcess;

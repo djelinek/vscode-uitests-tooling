@@ -1,11 +1,11 @@
-import { OutputView as Output, BottomBarPanel } from "vscode-extension-tester";
+import { OutputView, BottomBarPanel } from "vscode-extension-tester";
 
 /**
  * Similar object to vscode-extension-tester but with more functionality
  */
-class OutputView extends Output {
+class OutputViewExt extends OutputView {
 
-	private static instance: OutputView | null = null;
+	private static instance: OutputViewExt | null = null;
 
 	/**
 	 * Creates new object but does not open OutputView
@@ -28,20 +28,20 @@ class OutputView extends Output {
 		return contains;
 	}
 
-	public static async open(): Promise<OutputView> {
+	public static async open(): Promise<OutputViewExt> {
 		const panel = new BottomBarPanel();
 		await panel.openOutputView();
-		OutputView.instance = new OutputView(panel);
-		return OutputView.instance;
+		OutputViewExt.instance = new OutputViewExt(panel);
+		return OutputViewExt.instance;
 	}
 
-	public static getInstance(): OutputView {
-		if (OutputView.instance !== null) {
-			return OutputView.instance;
+	public static getInstance(): OutputViewExt {
+		if (OutputViewExt.instance !== null) {
+			return OutputViewExt.instance;
 		}
 		throw new Error("OutputView is closed");
 	}
 }
 
-export { OutputView };
-export default OutputView;
+export { OutputViewExt };
+export default OutputViewExt;
