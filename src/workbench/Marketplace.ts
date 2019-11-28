@@ -12,9 +12,7 @@ class Marketplace {
 
 	private _isOpen: boolean = false;
 
-	private constructor(private _extensionView: ViewControl, private _marketplaceSideBar: SideBarView) {
-
-	}
+	private constructor(private _extensionView: ViewControl, private _marketplaceSideBar: SideBarView) {}
 
 	public get isOpen(): boolean {
 		return this._isOpen;

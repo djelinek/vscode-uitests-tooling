@@ -6,10 +6,12 @@ import AsyncCommandProcess from "./Command";
  * @author Marian Lorinc <mlorinc@redhat.com>
  */
 interface MavenOptions extends SpawnOptions {
+
 	/**
 	 * Maven properties to be overridden when calling maven.
 	 */
 	properties?: { [key: string]: string };
+
 	/**
 	 * Args to be passed when calling maven.
 	 */
@@ -17,7 +19,6 @@ interface MavenOptions extends SpawnOptions {
 }
 
 /**
- * 
  * @param properties converts object filled with key:value to properties to be passed like in command line
  * @returns formatted array of strings to be passed to maven process
  * @author Marian Lorinc <mlorinc@redhat.com>
@@ -39,6 +40,7 @@ function parseVariables(properties?: { [key: string]: string }): Array<string> {
  * @author Marian Lorinc <mlorinc@redhat.com>
  */
 class Maven extends AsyncCommandProcess {
+
 	public constructor(options: MavenOptions) {
 		options.args = options.args || [];
 		super("mvn", [...parseVariables(options.properties), ...options.args], options);

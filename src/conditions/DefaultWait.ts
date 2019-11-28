@@ -1,9 +1,6 @@
 /**
- * Class containing all basic wait conditions
- * 
- * @author djelinek
+ * Predefined waiting time constants
  */
-
 enum TimePeriod {
 	DEFAULT = 5000,
 	SHORT = 1500,
@@ -11,6 +8,11 @@ enum TimePeriod {
 	LONG = 15000,
 	VERY_LONG = 30000
 }
+
+/**
+ * Class containing all basic wait conditions
+ * @author Dominik Jelinek <djelinek@redhat.com>
+ */
 class DefaultWait {
 
 	public static readonly TimePeriod = TimePeriod;
