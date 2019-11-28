@@ -1,27 +1,29 @@
 {
-    "compilerOptions": {
-      "module": "commonjs",
-      "target": "es6",
-      "outDir": "out",
-      "lib": [
-          "es6"
-      ],
-      "sourceMap": true,
-      "rootDir": "src",
-      "forceConsistentCasingInFileNames": true,
-      "strict": true,
-      "noUnusedLocals": true,
-      "noImplicitReturns": true,
-      "noImplicitAny": true,
-      "strictNullChecks": true,
-      "noUnusedParameters": true,
-      "experimentalDecorators": true,
-      "resolveJsonModule": true,
-      "declaration": true
-    },
-    "include": [
-      "src"
-    ],
-    "exclude": ["node_modules", "resources"]
-  }
-  
+	"compilerOptions": {
+		"module": "commonjs",
+		"target": "es6",
+		"outDir": "out",
+		"lib": [
+			"es6"
+		],
+		"sourceMap": true,
+		"rootDir": "src",
+		"forceConsistentCasingInFileNames": true,
+		"strict": true,
+		"noUnusedLocals": true,
+		"noImplicitReturns": true,
+		"noImplicitAny": true,
+		"strictNullChecks": true,
+		"noUnusedParameters": true,
+		"experimentalDecorators": true,
+		"resolveJsonModule": true,
+		"declaration": true
+	},
+	"include": [
+		"src"
+	],
+	"exclude": [
+		"node_modules",
+		"resources"
+	]
+}

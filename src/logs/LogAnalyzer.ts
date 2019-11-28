@@ -6,7 +6,6 @@ import * as readline from "readline";
  */
 type WhenCallback = (regexResult: RegExpExecArray) => void;
 
-
 type Data = { [key: string]: string };
 
 /**
@@ -52,7 +51,6 @@ class LogAnalyzer {
 	private _done: boolean = false;
 
 	/**
-	 * 
 	 * @param _logReader readline interface to be used to read logs
 	 */
 	public constructor(private _logReader: readline.Interface) {
@@ -61,7 +59,6 @@ class LogAnalyzer {
 		this.analyzerWithoutOrder = this.analyzerWithoutOrder.bind(this);
 		this.captureData = this.captureData.bind(this);
 	}
-
 
 	/**
 	 * Get number of successful matches

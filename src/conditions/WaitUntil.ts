@@ -2,23 +2,20 @@ import { ContentAssist, VSBrowser, WebDriver } from "vscode-extension-tester";
 
 /**
  * Class containing wait until conditions
- * 
- * @author mlorinc <mlorinc@redhat.com>
+ * @author Dominik Jelinek <djelinek@redhat.com>
  */
 class WaitUntil {
 
-	driver: WebDriver;
+	protected driver: WebDriver;
 
-	constructor() {
+	public constructor() {
 		this.driver = VSBrowser.instance.driver;
 	}
 
 	/**
 	 * Waits until invoked Content Assistant has items
-	 * 
 	 * @param contentAssistant ContentAssist obj
 	 * @param timePeriod Timeout in ms
-	 * @author djelinek
 	 */
 	public async assistHasItems(contentAssistant: ContentAssist, timePeriod: number) {
 		await this.driver.wait(
@@ -30,7 +27,6 @@ class WaitUntil {
 				return false;
 			}, timePeriod);
 	}
-
 }
 
 export { WaitUntil };
