@@ -30,4 +30,3 @@ class WaitUntil {
 }
 
 export { WaitUntil };
-export default WaitUntil;

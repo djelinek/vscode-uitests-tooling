@@ -102,4 +102,3 @@ class Marketplace {
 }
 
 export { Marketplace };
-export default Marketplace;

@@ -200,4 +200,3 @@ class LogAnalyzer {
 }
 
 export { LogAnalyzer };
-export default LogAnalyzer;

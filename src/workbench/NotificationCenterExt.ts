@@ -17,4 +17,3 @@ class NotificationCenterExt {
 }
 
 export { NotificationCenterExt };
-export default { NotificationCenterExt };

@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as fsExtra from "fs-extra";
-import Dialog from "./Dialog";
+import { Dialog } from "./Dialog";
 
 /**
  * Project class represents VS code workspace. 
@@ -18,7 +18,6 @@ class Project {
 		this._isOpen = false;
 	}
 
-
 	public get path(): string {
 		return this._path;
 	}
@@ -31,7 +30,6 @@ class Project {
 	public get isOpen(): boolean {
 		return this._isOpen;
 	}
-
 
 	/**
 	 * Creates new project in filesystem.
@@ -83,4 +81,3 @@ class Project {
 }
 
 export { Project };
-export default Project;

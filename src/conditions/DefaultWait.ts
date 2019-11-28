@@ -29,4 +29,3 @@ class DefaultWait {
 }
 
 export { DefaultWait };
-export default DefaultWait;

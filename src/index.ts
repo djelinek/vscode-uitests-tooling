@@ -18,9 +18,9 @@ export * from './extensions/ProjectInitializerExt';
 export * from './logs/LogAnalyzer';
 
 // process
+export * from './process/AsyncCommandProcess';
+export * from './process/AsyncNodeProcess';
 export * from './process/AsyncProcess';
-export * from './process/Command';
-export * from './process/Fork';
 export * from './process/Maven';
 
 // promise
