@@ -1,61 +1,62 @@
 {
-  "name": "vscode-uitests-tooling",
-  "displayName": "Tooling for VS Code UI Tests by Red Hat",
-  "description": "UI Tests Utils for VS Code extensions",
-  "version": "1.1.0",
-  "preview": true,
-  "author": "Dominik Jelinek",
-  "license": "Apache-2.0",
-  "main": "out/index.js",
-  "types": "out/index.d.ts",
-  "files": [
-    "out/**/*.js",
-    "out/**/*.d.ts"
-  ],
-  "keywords": [
-    "utils",
-    "uitests",
-    "redhat",
-    "camel-tooling",
-    "tooling",
-    "vscode-extension-tester"
-  ],
-  "maintainers": [
-    {
-      "name": "Dominik Jelinek",
-      "email": "djelinek@redhat.com"
-    }
-  ],
-  "homepage": "https://github.com/djelinek/vscode-uitests-tooling",
-  "bugs": {
-    "url": "https://github.com/djelinek/vscode-uitests-tooling/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/djelinek/vscode-uitests-tooling.git"
-  },
-  "scripts": {
-    "vscode:prepublish": "npm install && npm run compile",
-    "prepack": "npm run build",
-    "compile": "tsc -p ./",
-    "build": "tsc",
-    "clean": "rm -rf out node_modules *.tgz package-lock.json",
-    "lint": "tslint -c tslint.json 'src/**/*.ts'"
-  },
-  "devDependencies": {
-    "@types/chai": "^4.2.3",
-    "@types/fs-extra": "^8.0.1",
-    "@types/mocha": "^5.2.7",
-    "@types/node": "^12.7.3",
-    "chai": "^4.2.0",
-    "fs-extra": "^8.1.0",
-    "mocha": "^6.2.0",
-    "ts-essentials": "^3.0.2",
-    "tslint": "^5.20.0",
-    "typescript": "^3.5.1",
-    "vscode-extension-tester": "2.0.0"
-  },
-  "peerDependencies": {
-    "vscode-extension-tester": "2.0.0"
-  }
+	"name": "vscode-uitests-tooling",
+	"displayName": "Tooling for VS Code UI Tests by Red Hat",
+	"description": "UI Tests Utils for VS Code extensions",
+	"version": "2.0.0",
+	"author": "Dominik Jelinek",
+	"license": "Apache-2.0",
+	"main": "out/index.js",
+	"types": "out/index.d.ts",
+	"files": [
+		"out/**/*.js",
+		"out/**/*.d.ts"
+	],
+	"keywords": [
+		"utils",
+		"uitests",
+		"redhat",
+		"camel-tooling",
+		"tooling",
+		"vscode-extension-tester"
+	],
+	"maintainers": [
+		{
+			"name": "Dominik Jelinek",
+			"email": "djelinek@redhat.com"
+		}
+	],
+	"homepage": "https://github.com/djelinek/vscode-uitests-tooling#readme",
+	"bugs": {
+		"url": "https://github.com/djelinek/vscode-uitests-tooling/issues",
+		"email": "djelinek@redhat.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/djelinek/vscode-uitests-tooling.git"
+	},
+	"scripts": {
+		"vscode:prepublish": "npm install && npm run compile",
+		"prepack": "npm run build",
+		"compile": "tsc -p ./",
+		"build": "tsc",
+		"clean": "rm -rf out node_modules *.tgz",
+		"lint": "tslint -c tslint.json 'src/**/*.ts'",
+		"dev": "npm run clean && npm install && npm run compile && npm pack"
+	},
+	"devDependencies": {
+		"@types/chai": "^4.2.3",
+		"@types/fs-extra": "^8.0.1",
+		"@types/mocha": "^5.2.7",
+		"@types/node": "^12.7.3",
+		"chai": "^4.2.0",
+		"fs-extra": "^8.1.0",
+		"mocha": "^6.2.0",
+		"ts-essentials": "^3.0.2",
+		"tslint": "^5.20.0",
+		"typescript": "^3.5.1",
+		"vscode-extension-tester": "^2.1.1"
+	},
+	"peerDependencies": {
+		"vscode-extension-tester": "^2.1.1"
+	}
 }
