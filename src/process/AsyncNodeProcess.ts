@@ -1,5 +1,5 @@
 import * as childProcess from "child_process";
-import AsyncProcess from "./AsyncProcess";
+import { AsyncProcess } from "./AsyncProcess";
 
 class AsyncNodeProcess extends AsyncProcess {
 	
@@ -13,4 +13,3 @@ class AsyncNodeProcess extends AsyncProcess {
 }
 
 export { AsyncNodeProcess };
-export default AsyncNodeProcess;

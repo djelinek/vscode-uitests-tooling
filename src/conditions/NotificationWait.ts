@@ -28,4 +28,3 @@ class NotificationWait {
 }
 
 export { NotificationWait };
-export default { NotificationWait };

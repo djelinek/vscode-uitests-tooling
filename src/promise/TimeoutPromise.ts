@@ -31,4 +31,3 @@ class TimeoutPromise<T> extends Promise<T> {
 }
 
 export { TimeoutPromise };
-export default TimeoutPromise;

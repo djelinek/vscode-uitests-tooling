@@ -24,4 +24,3 @@ class StatusBarExt extends StatusBar {
 }
 
 export { StatusBarExt };
-export default StatusBarExt;

@@ -1,7 +1,7 @@
 import * as childProcess from "child_process";
 import * as stream from "stream";
 import * as readline from "readline";
-import TimeoutPromise from "../promise/TimeoutPromise";
+import { TimeoutPromise } from "../promise/TimeoutPromise";
 
 /**
  * Checks if process indetified with pid is running.
@@ -256,4 +256,3 @@ abstract class AsyncProcess {
 }
 
 export { AsyncProcess, isRunning };
-export default AsyncProcess;

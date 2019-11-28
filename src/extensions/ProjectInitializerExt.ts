@@ -21,4 +21,3 @@ namespace ProjectInitializerExt {
 }
 
 export { ProjectInitializerExt };
-export default { ProjectInitializerExt };
