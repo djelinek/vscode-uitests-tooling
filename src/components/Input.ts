@@ -164,4 +164,3 @@ class Input {
 }
 
 export { Input };
-export default Input;

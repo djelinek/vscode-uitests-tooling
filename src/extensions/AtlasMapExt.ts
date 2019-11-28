@@ -53,4 +53,3 @@ class AtlasMapExt {
 }
 
 export { AtlasMapExt };
-export default { AtlasMapExt };

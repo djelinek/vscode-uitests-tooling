@@ -44,4 +44,3 @@ class OutputViewExt extends OutputView {
 }
 
 export { OutputViewExt };
-export default OutputViewExt;

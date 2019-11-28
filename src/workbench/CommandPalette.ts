@@ -35,4 +35,3 @@ class CommandPalette extends QuickOpenBox {
 }
 
 export { CommandPalette };
-export default CommandPalette;

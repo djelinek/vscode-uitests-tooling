@@ -1,5 +1,5 @@
 import { SpawnOptions } from "child_process";
-import AsyncCommandProcess from "./Command";
+import { AsyncCommandProcess } from "./AsyncCommandProcess";
 
 /**
  * Extends options of spawn process with maven options
@@ -48,4 +48,3 @@ class Maven extends AsyncCommandProcess {
 }
 
 export { Maven };
-export default Maven;
