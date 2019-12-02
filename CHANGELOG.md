@@ -1,5 +1,8 @@
 # Change Log
 
+## 2.1.0 (latest)
+	- Includes new test runner for UI tests
+
 ## 2.0.0 (Nov 28)
 	- Included classes from WSDL2Rest project UI tests utils
 	- Rename some of existing classes, and reorginize .ts file structure
