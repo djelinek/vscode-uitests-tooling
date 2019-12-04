@@ -11,6 +11,9 @@
 		"out/**/*.js",
 		"out/**/*.d.ts"
 	],
+	"bin": {
+		"uitest": "out/runners/UIRunner.js"
+	},
 	"keywords": [
 		"utils",
 		"uitests",
@@ -35,19 +38,23 @@
 		"url": "https://github.com/djelinek/vscode-uitests-tooling.git"
 	},
 	"scripts": {
-		"vscode:prepublish": "npm install && npm run compile",
+		"vscode:prepublish": "npm install && npm run build",
 		"prepack": "npm run build",
-		"compile": "tsc -p ./",
-		"build": "tsc",
+		"build": "tsc -p ./ && chmod a+x out/runners/UIRunner.js",
+		"watch": "tsc --watch",
 		"clean": "rm -rf out node_modules *.tgz",
 		"lint": "eslint 'src/**/*.ts'",
-		"dev": "npm run clean && npm install && npm run compile && npm pack"
+		"dev": "npm run clean && npm install && npm pack"
+	},
+	"dependencies": {
+		"yargs": "^15.0.2"
 	},
 	"devDependencies": {
 		"@types/chai": "^4.2.3",
 		"@types/fs-extra": "^8.0.1",
 		"@types/mocha": "^5.2.7",
 		"@types/node": "^12.7.3",
+		"@types/yargs": "^13.0.3",
 		"@typescript-eslint/eslint-plugin": "^2.9.0",
 		"@typescript-eslint/parser": "^2.9.0",
 		"chai": "^4.2.0",
