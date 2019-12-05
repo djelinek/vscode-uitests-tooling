@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { ExTester } from "vscode-extension-tester";
-import argParse from "./ArgumentParser";
+import { parseArgs as argumentParser } from "./ArgumentParser";
 import * as fs from "fs";
 import * as path from "path";
 
@@ -13,7 +13,7 @@ const parametersEnvKey = "UI_TOOLING_TEST_PARAMETERS";
  * @author Marian Lorinc <mlorinc@redhat.com>
  */
 function parseArgs(): { [key: string]: any } {
-	const argv = argParse();
+	const argv = argumentParser();
 	// skip "$programPath" args and keep command and other arguments
 	const { $0, ...args } = argv;
 	return args;
@@ -52,7 +52,6 @@ class UIRunner {
 	public constructor() {
 		this._args = parseArgs();
 	}
-
 
 	public get args(): { [key: string]: any } {
 		return this._args;

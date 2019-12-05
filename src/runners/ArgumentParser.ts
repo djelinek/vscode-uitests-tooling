@@ -7,7 +7,6 @@ import * as fs from "fs";
  */
 function parametersParser(argv: any) {
 	// check if test parameters was provided
-
 	const testParameters = argv.test_parameters as string;
 
 	if (testParameters !== undefined) {
@@ -30,7 +29,7 @@ function parametersParser(argv: any) {
  * Parse args passed to process.
  * @author Marian Lorinc <mlorinc@redhat.com>
  */
-export default function parseArgs(): { [key: string]: any } {
+function parseArgs(): { [key: string]: any } {
 	return yargs
 		.middleware(parametersParser)
 		.command("run <file_glob>", "Run tests", yargs => {
@@ -46,7 +45,7 @@ export default function parseArgs(): { [key: string]: any } {
 				})
 				.option("without_vsix", {
 					type: "boolean",
-					description: "Do not install extension from source code(useful when testing extension without source code)",
+					description: "Do not install extension from source code (useful when testing extension without source code)",
 					default: false
 				})
 				.option("vscode_version", {
@@ -77,3 +76,5 @@ export default function parseArgs(): { [key: string]: any } {
 		.alias("v", "version")
 		.argv;
 }
+
+export { parseArgs };
