@@ -1,4 +1,5 @@
-import { TitleBar, DialogHandler, OpenDialog } from 'vscode-extension-tester';
+import { TitleBar } from 'vscode-extension-tester';
+import { DialogHandler, OpenDialog } from 'vscode-extension-tester-native';
 
 /**
  * Handles File Dialogs 
