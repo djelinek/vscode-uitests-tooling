@@ -1,8 +1,13 @@
 # Change Log
 
-## 2.0.0 (Nov 28)
+## 2.0.1 (May 20, 2020)
+	- Updated 'vscode-extension-tester' dependency to 3.0.1 version
+	- Added new dependency 'vscode-extension-tester-native' version 3.0.0
+	- Updated README.md file
+
+## 2.0.0 (November 28, 2020)
 	- Included classes from WSDL2Rest project UI tests utils
-	- Rename some of existing classes, and reorginize .ts file structure
+	- Rename some of existing classes, and reorganize .ts file structure
 	- Update 'vscode-extension-tester' dependency to 2.1.1 version
 	- Migrate to eslint from deprecated tslint
 	- Include 'package-lock.json' to git repository

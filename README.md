@@ -4,25 +4,30 @@
 UI Tests Tooling for VS Code extensions is a package built on [VS Code Extension Tester](https://github.com/redhat-developer/vscode-extension-tester). It provides more specific functions, wait conditions, sets of features and others for testing of VS Code extensions.
 
 ## Usage
-First simply install _vscode-extension-tester_ into your extension devDependencies:
+1. First simply install _vscode-extension-tester_ into your extension devDependencies:
 
 ```
 > npm install -D vscode-extension-tester
 ```
 
-Then install _vscode-uitests-tooling_ into your extension devDependencies:
+_Optional: install also package for handling Native dialogs_
+```
+> npm install -D vscode-extension-tester-native
+```
+
+2. Then install _vscode-uitests-tooling_ into your extension devDependencies:
 
 ```
 > npm install -D vscode-uitests-tooling
 ```
 
-After that just setup ui-test run script and thats all. (see [Test setup](https://github.com/redhat-developer/vscode-extension-tester/wiki/Test-Setup)).
+After that just setup ui-test run script and thats all. (see [Test setup](https://github.com/redhat-developer/vscode-extension-tester/wiki/Test-Setup)). 
 
 ## Contribution
 If you want to provide any new functionality, please create Issue or PR to this repository.
 
 ### Local development steps
-These are necessary steps for local contribution and testing of _vscode-uitests-tooling_ package. The ```npm pack``` step is very important, because of peerDependency on _vscode-extension-tester_.
+These are necessary steps for local contribution and testing of _vscode-uitests-tooling_ package.
 
 ##### Inside _vscode-uitests-tooling_ package run
 ```
@@ -32,5 +37,5 @@ These are necessary steps for local contribution and testing of _vscode-uitests-
 ##### Inside developed extension run
 ```
 > npm uninstall -D vscode-uitests-tooling
-> npm install -D file:../vscode-uitests-tooling/vscode-uitests-tooling-2.0.0.tgz
+> npm install -D file:../vscode-uitests-tooling/vscode-uitests-tooling-{x.x.x}.tgz
 ```
