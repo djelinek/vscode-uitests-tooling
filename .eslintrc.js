@@ -50,7 +50,6 @@ module.exports = {
         "no-sparse-arrays": "error",
         "no-throw-literal": "error",
         "no-unsafe-finally": "error",
-        "no-unused-expressions": "error",
         "no-unused-labels": "error",
         "no-var": "error",
     }
