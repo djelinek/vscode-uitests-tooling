@@ -39,3 +39,9 @@ These are necessary steps for local contribution and testing of _vscode-uitests-
 > npm uninstall -D vscode-uitests-tooling
 > npm install -D file:../vscode-uitests-tooling/vscode-uitests-tooling-{x.x.x}.tgz
 ```
+
+##### Package testing
+
+```
+> npm test
+```
