@@ -1,0 +1,54 @@
+{
+	"name": "scenario-test-extension",
+	"displayName": "scenario-test-extension",
+	"publisher": "MarianLorinc",
+	"repository": {},
+	"description": "",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.45.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:scenario-test-extension.helloWorld"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "scenario-test-extension.helloWorld",
+				"title": "Hello World"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"clean": "rm -rf node_modules out *.vsix",
+		"compile": "tsc -p ./",
+		"lint": "eslint src --ext ts",
+		"watch": "tsc -watch -p ./",
+		"prepare-tooling": "npm uninstall vscode-uitests-tooling && npm i -D ../vscode-uitests-tooling-2.0.1.tgz",
+		"prepare-test-extension": "npm i && npm run lint && npm run compile",
+		"pretest": "rm -rf test-extensions && npm run prepare-tooling && npm run prepare-test-extension",
+		"test": "node ./out/tests/runner.js"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.1.1",
+		"@types/mocha": "^7.0.2",
+		"@types/node": "^13.11.0",
+		"@types/vscode": "^1.45.0",
+		"@typescript-eslint/eslint-plugin": "^2.30.0",
+		"@typescript-eslint/parser": "^2.30.0",
+		"eslint": "^6.8.0",
+		"glob": "^7.1.6",
+		"mocha": "^8.0.0",
+		"typescript": "^3.8.3",
+		"vsce": "^1.75.0",
+		"vscode-extension-tester": "^3.0.2",
+		"vscode-test": "^1.3.0",
+		"vscode-uitests-tooling": "file:../vscode-uitests-tooling-2.0.1.tgz"
+	},
+	"dependencies": {}
+}

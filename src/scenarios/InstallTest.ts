@@ -37,7 +37,7 @@ export interface InstallParameters {
  * @requires Test extension must not be installed
  * @param parameters test configuration
  */
-export function test(parameters?: InstallParameters) {
+export function installTest(parameters?: InstallParameters) {
 	const packageData = getPackageData();
 	const packageJson = packageData.getData<InstallParameters>();
 

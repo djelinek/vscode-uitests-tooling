@@ -3,3 +3,5 @@ node_modules
 .vscode
 *.vsix
 *.tgz
+test-resources
+test-extensions
