@@ -1,2 +1,2 @@
-export * from './InstallTest';
-export * from './StageTest';
+export { test as installTest } from './InstallTest';
+export { test as stageTest } from './StageTest';
