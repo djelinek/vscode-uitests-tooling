@@ -1,10 +1,5 @@
-import { expect } from 'chai';
-import {
-	Input as TesterInput,
-	InputBox,
-	QuickOpenBox,
-	QuickPickItem
-} from 'vscode-extension-tester';
+import { InputBox, QuickOpenBox, QuickPickItem } from "vscode-extension-tester";
+import { expect } from "chai";
 
 interface InputTestProperties {
 	text?: string;
@@ -17,7 +12,7 @@ interface InputTestProperties {
 
 class Input {
 
-	private constructor(private _input: InputBox | QuickOpenBox) { }
+	private constructor(private _input: InputBox | QuickOpenBox) {}
 
 	/**
   	* Get current text of the input field
@@ -165,38 +160,6 @@ class Input {
 			input = await new QuickOpenBox().wait(timeout);
 		}
 		return new Input(input);
-	}
-
-	/**
-	 * Wait for quick picks to show in vscode. If any of required quick pick does show, Error is thrown.
-	 * @param input vscode input element (must be visible in vscode)
-	 * @param quickPickTexts array of texts to be verified in list of suggested quickpicks
-	 * @param timeout time after waiting is stopped unsuccessfully
-	 * @throws Error type when any quickpick did not show in suggested quickpicks
-	 */
-	public static async waitQuickPicks(input: TesterInput, quickPickTexts: string[], timeout: number = 5000): Promise<void> {
-		const result = await input.getDriver().wait(async () => {
-			const quickPickItems = await input.getQuickPicks().catch(() => []);
-
-			if (quickPickItems.length === 0 && quickPickTexts.length > 0) {
-				return false;
-			}
-
-			return quickPickItems.every(async q => {
-				const text = await q.getText().catch(() => null);
-
-				if (text === null) {
-					return false;
-				}
-
-				return quickPickTexts.includes(text);
-			});
-		}, timeout).catch(() => false);
-
-		if (!result) {
-			const quickPickTexts = await Promise.all((await input.getQuickPicks()).map(q => q.getText()));
-			throw new Error(`Could not find all quick picks.\nExpected: ${quickPickTexts.join(", ")}\nGot: ${quickPickTexts.join(", ")}`);
-		}
 	}
 }
 

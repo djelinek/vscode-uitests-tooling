@@ -38,7 +38,7 @@
 		"vscode:prepublish": "npm install && npm run compile",
 		"prepack": "npm run build",
 		"compile": "tsc -p ./",
-		"build": "npm run compile",
+		"build": "tsc",
 		"clean": "rm -rf out node_modules *.tgz",
 		"lint": "eslint 'src/**/*.ts'",
 		"dev": "npm run clean && npm install && npm run compile && npm pack"
@@ -55,7 +55,7 @@
 		"fs-extra": "^8.1.0",
 		"mocha": "^7.1.2",
 		"ts-essentials": "^3.0.2",
-		"typescript": "^3.9.3",
+		"typescript": "^3.5.1",
 		"vscode-extension-tester": "^3.0.2",
 		"vscode-extension-tester-native": "^3.0.0"
 	},

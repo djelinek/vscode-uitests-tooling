@@ -1,13 +1,6 @@
-import {
-	ActivityBar,
-	ExtensionsViewItem,
-	ExtensionsViewSection,
-	SideBarView,
-	ViewControl,
-	VSBrowser
-} from 'vscode-extension-tester';
+import { ActivityBar, ViewControl, SideBarView, ExtensionsViewItem, ExtensionsViewSection } from "vscode-extension-tester";
 
-type ExtensionCategories = "Disabled" | "Enabled" | "Installed" | "Outdated" | "Other Recommendations" | "Marketplace" | "Popular";
+type ExtensionCategories = "Disabled" | "Enabled" | "Installed" | "Outdated" | "Other Recommendations" | "Marketplace";
 
 /**
  * ExtensionsViewSection facade class
@@ -18,9 +11,8 @@ class Marketplace {
 	private static instance: Marketplace | null = null;
 
 	private _isOpen: boolean = false;
-	private _lastSection: ExtensionsViewSection | undefined = undefined;
 
-	private constructor(private _extensionView: ViewControl, private _marketplaceSideBar: SideBarView) { }
+	private constructor(private _extensionView: ViewControl, private _marketplaceSideBar: SideBarView) {}
 
 	public get isOpen(): boolean {
 		return this._isOpen;
@@ -31,33 +23,32 @@ class Marketplace {
 	 * @param section name of section,
 	 * @returns promise which resolves to ExtensionsViewSection
 	 */
-	public async getExtensionsSection(section: ExtensionCategories): Promise<ExtensionsViewSection> {
-		this._lastSection = await this._marketplaceSideBar.getContent().getSection(section) as ExtensionsViewSection;
-		return this._lastSection;
+	public async getExtensions(section: ExtensionCategories = "Marketplace"): Promise<ExtensionsViewSection> {
+		return this._marketplaceSideBar.getContent().getSection(section) as Promise<ExtensionsViewSection>;
 	}
 
 	/**
 	 * Gets enabled section
 	 * @returns promise which resolves to ExtensionsViewSection
 	 */
-	public async getEnabledExtensionsSection(): Promise<ExtensionsViewSection> {
-		return this.getExtensionsSection("Enabled");
+	public async getEnabledExtensions(): Promise<ExtensionsViewSection> {
+		return this.getExtensions("Enabled");
 	}
 
 	/**
 	 * Gets disabled section
 	 * @returns promise which resolves to ExtensionsViewSection
 	 */
-	public async getDisabledExtensionsSection(): Promise<ExtensionsViewSection> {
-		return this.getExtensionsSection("Disabled");
+	public async getDisabledExtensions(): Promise<ExtensionsViewSection> {
+		return this.getExtensions("Disabled");
 	}
 
 	/**
 	 * Gets recommended section
 	 * @returns promise which resolves to ExtensionsViewSection
 	 */
-	public async getRecommendedExtensionsSection(): Promise<ExtensionsViewSection> {
-		return this.getExtensionsSection("Other Recommendations");
+	public async getRecommendedExtensions(): Promise<ExtensionsViewSection> {
+		return this.getExtensions("Other Recommendations");
 	}
 
 	/**
@@ -65,17 +56,15 @@ class Marketplace {
 	 * @param title display name of extension
 	 * @returns promise which resolves to ExtensionsViewItem(extension)
 	 */
-	public async findExtension(title: string, timeout: number = 5000): Promise<ExtensionsViewItem | undefined> {
-		// try to get enabled extension first. If vscode does not have any extension installed, get Popular section instead.
-		const section = await this.getEnabledExtensionsSection().catch(() => this.getExtensionsSection("Popular"));
-		return VSBrowser.instance.driver.wait(() => section.findItem(title).catch(() => undefined), timeout);
+	public async findExtension(title: string): Promise<ExtensionsViewItem | undefined> {
+		return (await this.getEnabledExtensions()).findItem(title);
 	}
 
 	/**
 	 * Clears search bar
 	 */
 	public async clearSearch(): Promise<void> {
-		const handler = this._lastSection || await this.getEnabledExtensionsSection();
+		const handler = await this.getEnabledExtensions();
 		return handler.clearSearch();
 	}
 

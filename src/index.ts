@@ -32,9 +32,3 @@ export * from './workbench/Marketplace';
 export * from './workbench/NotificationCenterExt';
 export * from './workbench/OutputView';
 export * from './workbench/StatusBarExt';
-
-// package
-export * from './extension/package/interfaces/Package';
-
-// scenarios
-export * from './scenarios';
