@@ -8,6 +8,7 @@ export * from './components/Project';
 // conditions
 export * from './conditions/DefaultWait';
 export * from './conditions/NotificationWait';
+export * from './conditions/Repeat';
 export * from './conditions/WaitUntil';
 
 // unique for extensions

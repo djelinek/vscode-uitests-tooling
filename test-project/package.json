@@ -30,8 +30,8 @@
 		"lint": "eslint src --ext ts",
 		"watch": "tsc -watch -p ./",
 		"prepare-tooling": "npm uninstall vscode-uitests-tooling && npm i -D ../vscode-uitests-tooling-2.1.0.tgz",
-		"prepare-test-extension": "npm i && npm run lint && npm run compile",
-		"pretest": "rm -rf test-extensions && npm run prepare-tooling && npm run prepare-test-extension",
+		"prepare-test-extension": "npm run lint && npm run compile",
+		"pretest": "rm -rf test-extensions && npm run prepare-test-extension",
 		"test": "node ./out/tests/preinstall-runner.js && node ./out/tests/postinstall-runner.js"
 	},
 	"devDependencies": {
