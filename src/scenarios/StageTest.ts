@@ -10,7 +10,6 @@ import { getPackageData } from "../extension/package/interfaces/Package";
 import { Input as InputUtils } from "../components/Input";
 import { Marketplace } from "../workbench/Marketplace";
 import {
-	EditorView,
 	ExtensionsViewItem,
 	InputBox,
 	Workbench,
@@ -76,10 +75,7 @@ export function stageTest(parameters: StagingParameters) {
 		after("Clear workspace", async function () {
 			this.timeout(parameters?.timeouts?.marketplaceClose || 5000);
 			await marketplace.clearSearch();
-			await Promise.all([
-				marketplace.close(),
-				new EditorView().closeAllEditors()
-			]);
+			await marketplace.close();
 		});
 
 		it("Find extension", async function () {

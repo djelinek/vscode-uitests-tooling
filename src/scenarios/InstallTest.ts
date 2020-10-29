@@ -58,10 +58,8 @@ export function installTest(parameters?: InstallParameters) {
 		after('Clear workspace', async function () {
 			this.timeout(parameters?.timeouts?.marketplaceClose || 10000);
 			await marketplace.clearSearch();
-			await Promise.all([
-				marketplace.close(),
-				new EditorView().closeAllEditors()
-			]);
+			await marketplace.close();
+			await new EditorView().closeAllEditors();
 		});
 
 		it('Find extension', async function () {
