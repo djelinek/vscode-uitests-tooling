@@ -1,15 +1,17 @@
 'use strict';
 
 // components
-export * from './components/Dialog';
+export { Dialog } from './components/Dialog';
 export * from './components/Input';
 export * from './components/Project';
+export * from './components/Menu';
 
 // conditions
 export * from './conditions/DefaultWait';
 export * from './conditions/NotificationWait';
 export * from './conditions/Repeat';
 export * from './conditions/WaitUntil';
+export * from './conditions/WebElement';
 
 // unique for extensions
 export * from './extensions/AtlasMapExt';

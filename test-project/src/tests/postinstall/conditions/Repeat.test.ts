@@ -21,11 +21,12 @@ describe("Repeat", function () {
 
 		try {
 			await repeat(func, {
-				count: 5
+				count: 5,
+				id: "Test"
 			});
 		}
 		catch (e) {
-			expect((e as Error).message).equal("Cannot repeat function more than 5 times.");
+			expect((e as Error).message).equal("[Test] Cannot repeat function more than 5 times.");
 		}
 	});
 
@@ -35,12 +36,13 @@ describe("Repeat", function () {
 
 		try {
 			await repeat(func, {
-				timeout: 2000
+				timeout: 2000,
+				id: "Test"
 			});
 			expect.fail("Repeat did not throw error");
 		}
 		catch (e) {
-			expect(((e as Error)).message).includes("Promise timed out after");
+			expect(((e as Error)).message).includes("Promise(id=Test) timed out after");
 		}
 	});
 
@@ -71,12 +73,13 @@ describe("Repeat", function () {
 		try {
 			await repeat(func, {
 				count: repeatCount,
-				timeout: 20
+				timeout: 20,
+				id: "Test"
 			});
 			expect.fail("Repeat did not throw error");
 		}
 		catch (e) {
-			expect((e as Error).message).includes("Promise timed out after");
+			expect((e as Error).message).includes("Promise(id=Test) timed out after");
 		}
 	});
 });

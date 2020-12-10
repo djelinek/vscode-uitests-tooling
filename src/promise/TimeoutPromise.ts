@@ -2,10 +2,15 @@ export type Resolver<T> = (value?: T | PromiseLike<T> | undefined) => void;
 export type Rejecter = (reason?: any) => void;
 type Executor<T> = (resolve: Resolver<T>, reject: Rejecter) => void;
 
+export interface TimeoutPromiseOptions {
+	onTimeout?: () => any;
+	id?: string;
+}
+
 class TimeoutPromise<T> extends Promise<T> {
 
-	public constructor(executor: Executor<T>, timeout?: number, onTimeout?: () => void) {
-		super(TimeoutPromise.create(executor, timeout, onTimeout));
+	public constructor(executor: Executor<T>, timeout?: number, options?: TimeoutPromiseOptions) {
+		super(TimeoutPromise.create(executor, timeout, options));
 	}
 
 	private static decorateResolver<T>(resolver: Resolver<T> | Rejecter, timer: NodeJS.Timeout | null): Resolver<T> {
@@ -17,18 +22,19 @@ class TimeoutPromise<T> extends Promise<T> {
 		};
 	}
 
-	private static create<T>(executor: Executor<T>, timeout?: number, onTimeout?: () => void): Executor<T> {
+	private static create<T>(executor: Executor<T>, timeout?: number, options?: TimeoutPromiseOptions): Executor<T> {
 		return async (resolve: (value?: T | PromiseLike<T> | undefined) => void,
 			reject: (reason?: any) => void) => {
 	
 			let timer: NodeJS.Timeout | null = null;
-				
+			const id = options?.id || "anonymous";	
+
 			if (timeout !== undefined) {
 				const start = Date.now();
 				timer = setTimeout(() => {
-					reject(new Error(`Promise timed out after ${Date.now() - start}ms.`));
-					if (onTimeout) {
-						onTimeout();
+					reject(new Error(`Promise(id=${id}) timed out after ${Date.now() - start}ms.`));
+					if (options?.onTimeout) {
+						options?.onTimeout();
 					}
 				}, timeout);
 			}

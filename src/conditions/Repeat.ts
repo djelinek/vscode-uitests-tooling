@@ -9,6 +9,10 @@ export interface RepeatArguments {
 	 * Repeat timeout after promise is rejected. If undefined function will be repeated <count> times or infinitely.
 	 */
 	timeout?: number;
+	log?: boolean;
+
+	// Repeat identification. For log purposes.
+	id?: string;
 }
 /**
  * Repeat function until it returns truthy value.
@@ -19,6 +23,10 @@ export interface RepeatArguments {
 export async function repeat<T>(func: (() => T | PromiseLike<T>), options?: RepeatArguments): Promise<T> {
 	const { count, timeout } = options || { count: undefined, timeout: undefined };
 	let run = true;
+	const id = options?.id || "anonymous";
+	const log =  options?.log ? (message: string, loggerFunction: (message:string) => void = console.log) => {
+		loggerFunction(`[${id}] ${message}`);
+	} : () => {};
 
 	if (count !== undefined && count <= 0) {
 		throw new Error("Count must be larger than 0");
@@ -26,7 +34,7 @@ export async function repeat<T>(func: (() => T | PromiseLike<T>), options?: Repe
 
 	async function closure(cnt: number | undefined, resolve: Resolver<T>, reject: Rejecter) {
 		if (cnt !== undefined && cnt === 0) {
-			reject(new Error(`Cannot repeat function more than ${count} times.`));
+			reject(new Error(`[${id}] Cannot repeat function more than ${count} times.`));
 			return;
 		}
 		try {
@@ -38,12 +46,17 @@ export async function repeat<T>(func: (() => T | PromiseLike<T>), options?: Repe
 			throw new Error("Value does not have truthy value");
 		}
 		catch (e) {
+			log(e, console.error);
 			if (run) {
+				log("Scheduling ...");
 				setImmediate(closure, cnt !== undefined ? cnt - 1 : undefined, resolve, reject);
 			}
 		}
 	}
 	return new TimeoutPromise<T>((resolve, reject) => {
 		setImmediate(closure, count, resolve, reject);
-	}, timeout, () => run = false);
+	}, timeout, {
+		onTimeout: () => run = false,
+		id: options?.id
+	});
 }

@@ -1,22 +1,22 @@
-import { QuickOpenBox, TitleBar } from "vscode-extension-tester";
+import { Input, InputBox, TitleBar } from "vscode-extension-tester";
+import { Input as InputHelper } from "../components/Input";
 
 /**
  * Represents command palette element in vscode
  * @author Marian Lorinc <mlorinc@redhat.com>
  */
-class CommandPalette extends QuickOpenBox {
+class CommandPalette extends InputHelper {
 
-	private constructor() {
-		super();
+	private constructor(input: Input | InputHelper) {
+		super(input);
 	}
 
 	/**
 	 * Executes command in command palette
 	 * @param command command to be executed
 	 */
-	public async executeCommand(command: string): Promise<void> {
-		await this.setText(command.startsWith(">") ? command : ">" + command);
-		await this.confirm();
+	public async executeCommand(command: string, timeout: number = 5000): Promise<void> {
+		return this.typeAndConfirm(command.startsWith(">") ? command : ">" + command, timeout);
 	}
 
 	/**
@@ -26,11 +26,11 @@ class CommandPalette extends QuickOpenBox {
 	public static async open(): Promise<CommandPalette> {
 		const titleBar = new TitleBar();
 		await titleBar.select("View", "Command Palette...");
-		return new CommandPalette().wait();
+		return this.getInstance();
 	}
 
 	public static async getInstance(): Promise<CommandPalette> {
-		return new CommandPalette().wait();
+		return new CommandPalette(await InputBox.create());
 	}
 }
 

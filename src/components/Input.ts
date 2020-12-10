@@ -5,6 +5,7 @@ import {
 	QuickOpenBox,
 	QuickPickItem
 } from 'vscode-extension-tester';
+import { WebElementConditions, repeat } from '..';
 
 interface InputTestProperties {
 	text?: string;
@@ -16,8 +17,16 @@ interface InputTestProperties {
 }
 
 class Input {
+	private _input: TesterInput;
 
-	private constructor(private _input: InputBox | QuickOpenBox) { }
+	protected constructor(input: TesterInput | Input) { 
+		if (input instanceof Input) {
+			this._input = input._input;
+		}
+		else {
+			this._input = input;
+		}
+	}
 
 	/**
   	* Get current text of the input field
@@ -157,10 +166,26 @@ class Input {
 		}
 	}
 
+	/**
+	 * Type in text and confirm.
+	 * @param text command palette input
+	 * @param timeout 
+	 */
+	public async typeAndConfirm(text: string, timeout: number = 5000): Promise<void> {
+		await WebElementConditions.waitUntilInteractive(this._input, timeout);
+		await this._input.setText(text);
+		await repeat(async () => {
+			await this._input.confirm().catch(() => {});
+			return await WebElementConditions.isHidden(this._input);
+		}, {
+			timeout
+		});
+	}
+
 	public static async getInstance(timeout?: number): Promise<Input> {
 		let input: InputBox | QuickOpenBox;
 		try {
-			input = await new InputBox().wait(timeout);
+			input = await InputBox.create();
 		} catch (e) {
 			input = await new QuickOpenBox().wait(timeout);
 		}

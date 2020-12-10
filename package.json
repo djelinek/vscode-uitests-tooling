@@ -40,7 +40,7 @@
 		"build": "npm run compile",
 		"clean": "rm -rf out node_modules *.tgz && npm run clean --prefix test-project",
 		"lint": "eslint 'src/**/*.ts'",
-    "dev": "npm pack",
+		"dev": "npm pack",
 		"pretest": "npm pack && npm run prepare-tooling --prefix test-project && npm ci --prefix test-project",
 		"test": "npm test --prefix test-project"
 	},
@@ -59,11 +59,11 @@
 		"eslint": "^6.7.1",
 		"ts-essentials": "^3.0.2",
 		"typescript": "^3.9.5",
-		"vscode-extension-tester": "^3.2.1",
-		"vscode-extension-tester-native": "^3.0.1"
+		"vscode-extension-tester": "^3.2.5",
+		"vscode-extension-tester-native": "^3.0.2"
 	},
 	"peerDependencies": {
-		"vscode-extension-tester": "^3.2.1",
-		"vscode-extension-tester-native": "^3.0.1"
+		"vscode-extension-tester": "^3.2.5",
+		"vscode-extension-tester-native": "^3.0.2"
 	}
 }
