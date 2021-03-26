@@ -81,23 +81,32 @@ class Marketplace {
 	 * @returns marketplace handler
 	 */
 	public static async open(): Promise<Marketplace> {
-		const extensionView = new ActivityBar().getViewControl("Extensions");
-		const marketplaceView = await extensionView.openView();
-		Marketplace.instance = new Marketplace(extensionView, marketplaceView);
-		Marketplace.instance._isOpen = true;
-		return Marketplace.instance;
+		const extensionView = await new ActivityBar().getViewControl("Extensions");
+		if(extensionView) {
+			const marketplaceView = await extensionView.openView();
+			Marketplace.instance = new Marketplace(extensionView, marketplaceView);
+			Marketplace.instance._isOpen = true;
+			return Marketplace.instance;
+		} else {
+			throw Error('Cannot find Extensions view');
+		}
 	}
 
 	/**
 	 * Gets open instance of marketplace
 	 * @returns marketplace handler
 	 */
-	public static getInstance() {
+	public static async getInstance() {
 		if (Marketplace.instance !== null) {
 			return Marketplace.instance;
 		}
-		Marketplace.instance = new Marketplace(new ActivityBar().getViewControl("Extensions"), new SideBarView());
-		return Marketplace.instance;
+		const extensionView = await new ActivityBar().getViewControl("Extensions");
+		if(extensionView) {
+			Marketplace.instance = new Marketplace(extensionView, new SideBarView());
+			return Marketplace.instance;
+		} else {
+			throw Error('Cannot find Extensions view');
+		}
 	}
 }
 
