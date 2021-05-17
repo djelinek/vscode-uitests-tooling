@@ -1,10 +1,12 @@
 import * as childProcess from "child_process";
 import * as stream from "stream";
 import * as readline from "readline";
-import { TimeoutPromise } from "../promise/TimeoutPromise";
+import killProcess = require("tree-kill");
+import { TimeoutPromise } from "../conditions/TimeoutPromise";
+
 
 /**
- * Checks if process indetified with pid is running.
+ * Checks if process identified with pid is running.
  * @param pid pid of process
  * @author Marian Lorinc <mlorinc@redhat.com>
  */
@@ -220,8 +222,19 @@ abstract class AsyncProcess {
 	 */
 	public async exit(force?: boolean, ms?: number): Promise<number> {
 		const waitPromise = this.wait(ms);
-		this.process!.kill(force ? "SIGKILL" : "SIGTERM");
-		return waitPromise;
+		
+		const killPromise = new Promise<void>((resolve, reject) => {
+			killProcess(this.process!.pid, force ? "SIGKILL" : "SIGTERM", (e?: Error) => {
+				if (e) {
+					reject(e);
+				}
+				else {
+					resolve();
+				}
+			});
+		});
+
+		return Promise.all([killPromise, waitPromise]).then(([_, code]) => code);
 	}
 
 	/**
