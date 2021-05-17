@@ -4,11 +4,15 @@
 export * from './components/Dialog';
 export * from './components/Input';
 export * from './components/Project';
+export * from './components/activityBar/ActivityBar';
+export * from './components/workbench/Workbench';
 
 // conditions
 export * from './conditions/DefaultWait';
 export * from './conditions/NotificationWait';
 export * from './conditions/WaitUntil';
+export * from './conditions/TimeoutPromise';
+export * from './conditions/Repeat';
 
 // unique for extensions
 export * from './extensions/AtlasMapExt';
@@ -22,9 +26,6 @@ export * from './process/AsyncCommandProcess';
 export * from './process/AsyncNodeProcess';
 export * from './process/AsyncProcess';
 export * from './process/Maven';
-
-// promise
-export * from './promise/TimeoutPromise';
 
 // workbench
 export * from './workbench/CommandPalette';

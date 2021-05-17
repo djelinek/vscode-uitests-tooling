@@ -24,6 +24,9 @@
 	],
 	"exclude": [
 		"node_modules",
-		"resources"
+		"resources",
+		"test-resources",
+		"test-extensions",
+		"test-project"
 	]
 }
