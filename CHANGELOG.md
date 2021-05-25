@@ -1,5 +1,8 @@
 # Change Log
 
+## 2.1.0 (June 30, 2020)
+	- TODO
+
 ## 2.0.2 (Mar 30, 2021)
 	- Updated 'vscode-extension-tester' dependency to '4.0.2' version
 	- Updated 'vscode-extension-tester-native' dependency to '3.0.2' version
