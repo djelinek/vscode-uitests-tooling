@@ -1,5 +1,8 @@
 'use strict';
 
+// Mocha
+export * from './utils/Mocha';
+
 // components
 export * from './components/Dialog';
 export * from './components/Input';
