@@ -5,12 +5,10 @@ import { OutputView, BottomBarPanel } from "vscode-extension-tester";
  */
 class OutputViewExt extends OutputView {
 
-	private static instance: OutputViewExt | null = null;
-
 	/**
 	 * Creates new object but does not open OutputView
 	 */
-	private constructor(panel: BottomBarPanel = new BottomBarPanel()) {
+	constructor(panel: BottomBarPanel = new BottomBarPanel()) {
 		super(panel);
 	}
 
@@ -30,16 +28,13 @@ class OutputViewExt extends OutputView {
 
 	public static async open(): Promise<OutputViewExt> {
 		const panel = new BottomBarPanel();
+		await panel.toggle(true);
 		await panel.openOutputView();
-		OutputViewExt.instance = new OutputViewExt(panel);
-		return OutputViewExt.instance;
+		return new OutputViewExt(panel);
 	}
 
 	public static getInstance(): OutputViewExt {
-		if (OutputViewExt.instance !== null) {
-			return OutputViewExt.instance;
-		}
-		throw new Error("OutputView is closed");
+		return new OutputViewExt();
 	}
 }
 
