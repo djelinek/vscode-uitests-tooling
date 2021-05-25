@@ -1,4 +1,6 @@
-import { ActivityBar, ViewControl, SideBarView, ExtensionsViewItem, ExtensionsViewSection } from "vscode-extension-tester";
+import { SideBarView, ExtensionsViewItem, ExtensionsViewSection, TitleBar } from "vscode-extension-tester";
+import { ActivityBar } from "..";
+import { repeat } from "../conditions/Repeat";
 
 type ExtensionCategories = "Disabled" | "Enabled" | "Installed" | "Outdated" | "Other Recommendations" | "Marketplace";
 
@@ -7,24 +9,13 @@ type ExtensionCategories = "Disabled" | "Enabled" | "Installed" | "Outdated" | "
  * @author Marian Lorinc <mlorinc@redhat.com>
  */
 class Marketplace {
-
-	private static instance: Marketplace | null = null;
-
-	private _isOpen: boolean = false;
-
-	private constructor(private _extensionView: ViewControl, private _marketplaceSideBar: SideBarView) {}
-
-	public get isOpen(): boolean {
-		return this._isOpen;
-	}
-
 	/**
 	 * Gets marketplace section
 	 * @param section name of section,
 	 * @returns promise which resolves to ExtensionsViewSection
 	 */
 	public async getExtensions(section: ExtensionCategories = "Marketplace"): Promise<ExtensionsViewSection> {
-		return this._marketplaceSideBar.getContent().getSection(section) as Promise<ExtensionsViewSection>;
+		return new SideBarView().getContent().getSection(section) as Promise<ExtensionsViewSection>;
 	}
 
 	/**
@@ -51,62 +42,80 @@ class Marketplace {
 		return this.getExtensions("Other Recommendations");
 	}
 
+	public async getAnySection(timeout: number = 30000): Promise<ExtensionsViewSection> {
+		return await repeat(async () => {
+			const content = new SideBarView().getContent();
+
+			for (const section of await content.getSections()) {
+				if (section instanceof ExtensionsViewSection) {
+					return section;
+				}
+			}
+
+			return undefined;
+		}, {
+			timeout,
+			message: 'Could not find any marketplace sections.'
+		}) as ExtensionsViewSection;
+	}
+
 	/**
 	 * Finds extension in marketplace. Leaves search bar with title value.
 	 * @param title display name of extension
+	 * @param timeout timeout used when looking for extension
 	 * @returns promise which resolves to ExtensionsViewItem(extension)
 	 */
-	public async findExtension(title: string): Promise<ExtensionsViewItem | undefined> {
-		return (await this.getEnabledExtensions()).findItem(title);
+	public async findExtension(title: string, timeout: number = 30000): Promise<ExtensionsViewItem> {
+		const section = await this.getAnySection(timeout);
+		return await repeat(() => section.findItem(title), {
+			timeout,
+			message: `Could not find extension with title "${title}".`
+		}) as ExtensionsViewItem;
 	}
 
 	/**
 	 * Clears search bar
 	 */
-	public async clearSearch(): Promise<void> {
-		const handler = await this.getEnabledExtensions();
-		return handler.clearSearch();
+	public async clearSearch(timeout: number = 30000): Promise<void> {
+		const section = await this.getAnySection(timeout);
+		return section.clearSearch();
 	}
 
 	/**
 	 * Closes marketplace 
 	 */
-	public async close(): Promise<void> {
-		this._isOpen = false;
-		return this._extensionView.closeView();
+	public async close(timeout: number = 30000): Promise<void> {
+		const view = await new ActivityBar().getViewControl("Extensions", timeout);
+		return await view.closeView();
 	}
 
 	/**
 	 * Opens marketplace
 	 * @returns marketplace handler
 	 */
-	public static async open(): Promise<Marketplace> {
-		const extensionView = await new ActivityBar().getViewControl("Extensions");
-		if(extensionView) {
-			const marketplaceView = await extensionView.openView();
-			Marketplace.instance = new Marketplace(extensionView, marketplaceView);
-			Marketplace.instance._isOpen = true;
-			return Marketplace.instance;
-		} else {
-			throw Error('Cannot find Extensions view');
-		}
+	public static async open(timeout?: number): Promise<Marketplace> {
+		return await repeat(async () => {
+			await new TitleBar().select('View', 'Extensions');
+			const marketplace = new Marketplace();
+			try {
+				await marketplace.getAnySection(1000);
+				return marketplace;
+			}
+			catch {
+				return undefined;
+			}
+		}, {
+			timeout,
+			message: 'Could not open marketplace.'
+		}) as Marketplace;
 	}
 
 	/**
 	 * Gets open instance of marketplace
 	 * @returns marketplace handler
 	 */
-	public static async getInstance() {
-		if (Marketplace.instance !== null) {
-			return Marketplace.instance;
-		}
-		const extensionView = await new ActivityBar().getViewControl("Extensions");
-		if(extensionView) {
-			Marketplace.instance = new Marketplace(extensionView, new SideBarView());
-			return Marketplace.instance;
-		} else {
-			throw Error('Cannot find Extensions view');
-		}
+	public static async getInstance(timeout?: number) {
+		return Marketplace.open(timeout);
 	}
 }
 
