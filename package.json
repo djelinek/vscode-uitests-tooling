@@ -64,6 +64,7 @@
 	},
 	"peerDependencies": {
 		"vscode-extension-tester": "^4.0.3",
-		"vscode-extension-tester-native": "3.0.2"
+		"vscode-extension-tester-native": "3.0.2",
+		"mocha": ">=5.2.0"
 	}
 }
