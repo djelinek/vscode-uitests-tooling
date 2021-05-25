@@ -1,5 +1,12 @@
 # Change Log
 
+## 2.1.0 (May 26, 2021)
+	- Fix process kill on Windows
+	- Rework 'Open folder' feature
+	- Add screenshot feature to 'before' and 'after' Mocha handlers
+	- Improve stability of 'Marketplace' component
+	- Remove static check from 'OutputView'
+
 ## 2.0.2 (Mar 30, 2021)
 	- Updated 'vscode-extension-tester' dependency to '4.0.2' version
 	- Updated 'vscode-extension-tester-native' dependency to '3.0.2' version
