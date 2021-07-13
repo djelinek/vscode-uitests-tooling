@@ -36,3 +36,7 @@ export * from './workbench/Marketplace';
 export * from './workbench/NotificationCenterExt';
 export * from './workbench/OutputView';
 export * from './workbench/StatusBarExt';
+
+// editor
+export * from './components/editor/ContentAssist';
+export * from './components/editor/TextEditor';
