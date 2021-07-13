@@ -33,7 +33,37 @@ export class Workbench extends IWorkbench {
 			}
 		}, {
 			timeout,
-			message: `Could not get title bar.`
+			message: `Could not get title bar.${await new TitleBar().getTitle().then((title) => ` title = "${title}"`).catch(() => '')
+			}`
+		}) as string;
+	}
+
+	/**
+	 * Get path of open folder/workspace
+	 */
+	async getOpenFilePath(timeout: number = 30000): Promise<string> {
+		return await repeat(async () => {
+			try {
+				console.log(`Title = "${await new TitleBar().getTitle()}"`);
+
+				const { file } = await parseTitleBar();
+				if (file) {
+					return file;
+				}
+				else {
+					return undefined;
+				}
+			}
+			catch (e) {
+				if (e.name === 'NoSuchElementError' || e.message.includes('element is not attached to the page document')) {
+					return undefined;
+				}
+				throw e;
+			}
+		}, {
+			timeout,
+			message: `Could not get file path from title bar.${await new TitleBar().getTitle().then((title) => ` title = "${title}"`).catch(() => '')
+			}`
 		}) as string;
 	}
 
@@ -60,6 +90,29 @@ export class Workbench extends IWorkbench {
 		await dialog.selectPath(inputPath, timeout);
 		await dialog.confirm(timeout);
 		await this.openFolderWaitCondition(folderPath, timeout);
+	}
+
+	/**
+	 * Open file. Relative paths are resolved to absolute paths based on current open folder.
+	 * @param filePath path to file
+	 * @returns promise which is resolved when file is open
+	 */
+	async openFile(filePath: string, timeout: number = 40000): Promise<void> {
+		await new TitleBar().select('File', 'Open File...');
+
+		const dialog = await this.getOpenDialog();
+		filePath = PathUtils.normalizePath(filePath);
+
+		if (!path.isAbsolute(filePath)) {
+			filePath = path.join(await this.getOpenFolderPath(), filePath);
+		}
+
+		await dialog.selectPath(filePath, timeout);
+		await dialog.confirm(timeout);
+		await repeat(async () => await this.getOpenFilePath() === filePath, {
+			timeout,
+			message: `Could not open file with path "${filePath}"`
+		});
 	}
 
 	/**
@@ -138,10 +191,10 @@ async function parseTitleBar(): Promise<{ file: string | undefined; folder: stri
 			}
 		}
 		catch (e) {
-			if (!e.message.includes('no such file or directory')) {
-				throw e;
+			if (e.message.includes('no such file or directory')) {
+				continue;
 			}
-			continue;
+			throw e;
 		}
 	}
 
