@@ -1,5 +1,10 @@
 # Change Log
 
+## 2.2.0 (July 22, 2021)
+	- Added methods for handling ContentAssist
+	- Added methods for handling TextEditor
+	- Updated 'vscode-extension-tester' dependency to latest '4.1.1' version
+
 ## 2.1.0 (May 26, 2021)
 	- Fix process kill on Windows
 	- Rework 'Open folder' feature
