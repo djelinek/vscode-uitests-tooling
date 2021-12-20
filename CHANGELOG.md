@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.2.1 (December 22, 2021)
+	- Removed deprecated 'vscode-extension-tester-native' dependency
+	- Updated 'vscode-extension-tester' dependency to latest '4.2.3' version
+
 ## 2.2.0 (July 22, 2021)
 	- Added methods for handling ContentAssist
 	- Added methods for handling TextEditor

@@ -1,5 +1,4 @@
-import { TitleBar } from 'vscode-extension-tester';
-import { DialogHandler, OpenDialog } from 'vscode-extension-tester-native';
+import { TitleBar, InputBox } from 'vscode-extension-tester';
 
 /**
  * Handles File Dialogs 
@@ -10,15 +9,14 @@ class Dialog {
 	private constructor() {}
 	
 	/**
-	 * Open file with specified 'path' via Open File Dialog (File > Open File...)
+	 * Open file with specified 'path' via Simple Dialog (File > Open File...)
 	 * @param path path to the specific file
 	 * @returns resolved dialog
 	 */
-	public static async openFile(path?: string): Promise<OpenDialog> {
-		await new TitleBar().select('File', 'Open File...');
-		const dialog = await Dialog.open(path);
-		await dialog.confirm();
-		return dialog;
+	public static async openFile(path?: string): Promise<InputBox> {
+		const input = await Dialog.open(path);
+		await input.confirm();
+		return input;
 	}
 
 	/**
@@ -36,15 +34,14 @@ class Dialog {
 	}
 
 	/**
-	 * Open folder with specified 'path' via Open Folder Dialog (File > Open Folder...)
+	 * Open folder with specified 'path' via Open Folder Simple Dialog (File > Open Folder...)
 	 * @param path path to the specific folder
 	 * @returns resolved dialog
 	 */
-	public static async openFolder(path?: string): Promise<OpenDialog> {
-		await new TitleBar().select('File', 'Open Folder...');
-		const dialog = await Dialog.open(path);
-		await dialog.confirm();
-		return dialog;
+	public static async openFolder(path?: string): Promise<InputBox> {
+		const input = await Dialog.open(path);
+		await input.confirm();
+		return input;
 	}
 
 	/**
@@ -61,7 +58,7 @@ class Dialog {
 	 * @returns promise which resolves with dialog
 	 * @author Marian Lorinc <mlorinc@redhat.com>
 	 */
-	public static async confirm(path?: string): Promise<OpenDialog> {
+	public static async confirm(path?: string): Promise<InputBox> {
 		const dialog = await Dialog.open(path);
 		await dialog.confirm();
 		return dialog;
@@ -73,19 +70,19 @@ class Dialog {
 	 * @returns promise which resolves with dialog
 	 * @author Marian Lorinc <mlorinc@redhat.com>
 	 */
-	public static async cancel(path?: string): Promise<OpenDialog> {
+	public static async cancel(path?: string): Promise<InputBox> {
 		const dialog = await Dialog.open(path);
 		await dialog.cancel();
 		return dialog;
 	}
 
-	private static async open(path: string = ""): Promise<OpenDialog> {
-		const dialog = await DialogHandler.getOpenDialog();
-		if (dialog === null) {
-			return await Promise.reject('Could not open dialog!');
+	private static async open(path: string = ""): Promise<InputBox> {
+		const input = await InputBox.create();
+		if (input === null) {
+			return await Promise.reject('Could not open simple dialog!');
 		}
-		await dialog.selectPath(path);
-		return dialog;
+		await input.setText(path);
+		return input;
 	}
 }
 
