@@ -1,8 +1,10 @@
 # Change Log
 
-## 2.2.1 (December 22, 2021)
+## 2.2.1 (January 5, 2022)
 	- Removed deprecated 'vscode-extension-tester-native' dependency
 	- Updated 'vscode-extension-tester' dependency to latest '4.2.3' version
+	- Updated all vulnerable packages versions
+	- Used Simple Dialog instead of Native Dialog by default
 
 ## 2.2.0 (July 22, 2021)
 	- Added methods for handling ContentAssist
