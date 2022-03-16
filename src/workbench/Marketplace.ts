@@ -1,6 +1,7 @@
-import { SideBarView, ExtensionsViewItem, ExtensionsViewSection, TitleBar } from "vscode-extension-tester";
+import { SideBarView, ExtensionsViewItem, ExtensionsViewSection, TitleBar, InputBox, Workbench } from "vscode-extension-tester";
 import { ActivityBar } from "..";
 import { repeat } from "../conditions/Repeat";
+import { platform } from 'process';
 
 type ExtensionCategories = "Disabled" | "Enabled" | "Installed" | "Outdated" | "Other Recommendations" | "Marketplace";
 
@@ -94,8 +95,16 @@ class Marketplace {
 	 * @returns marketplace handler
 	 */
 	public static async open(timeout?: number): Promise<Marketplace> {
+		var isMac = platform === "darwin";
 		return await repeat(async () => {
-			await new TitleBar().select('View', 'Extensions');
+			if(isMac) {
+				await new Workbench().executeCommand('View: Open View');
+				const input = await InputBox.create();
+				await input.setText('view Extensions');
+				await input.confirm();
+			} else {
+				await new TitleBar().select('View', 'Extensions');
+			}
 			const marketplace = new Marketplace();
 			try {
 				await marketplace.getAnySection(1000);
