@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.3.1 (April 26, 2022)
+	- MarketPlace component is now compatible with macOS
+	- Updated 'vscode-extension-tester' dependency to latest '4.2.4' version
+
 ## 2.2.1 (January 5, 2022)
 	- Removed deprecated 'vscode-extension-tester-native' dependency
 	- Updated 'vscode-extension-tester' dependency to latest '4.2.3' version
