@@ -10,11 +10,6 @@ UI Tests Tooling for VS Code extensions is a package built on [VS Code Extension
 > npm install -D vscode-extension-tester
 ```
 
-_Optional: install also package for handling Native dialogs_
-```
-> npm install -D vscode-extension-tester-native
-```
-
 2. Then install _vscode-uitests-tooling_ into your extension devDependencies:
 
 ```
