@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.3.2 (August 4, 2022)
+	- Bump 'vscode-extension-tester' dependency to latest '4.4.0' version
+	- Bump 'selenium-webdriver' dependency to '4.3.1' version
+
 ## 2.3.1 (April 26, 2022)
 	- MarketPlace component is now compatible with macOS
 	- Updated 'vscode-extension-tester' dependency to latest '4.2.4' version
