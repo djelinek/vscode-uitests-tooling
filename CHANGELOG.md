@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.3.3 (September 19, 2022)
+	- Bump 'vscode-extension-tester' dependency to latest '5.0.0' version
+	- Updated all vulnerable packages versions
+
 ## 2.3.2 (August 4, 2022)
 	- Bump 'vscode-extension-tester' dependency to latest '4.4.0' version
 	- Bump 'selenium-webdriver' dependency to '4.3.1' version
