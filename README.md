@@ -24,13 +24,7 @@ If you want to provide any new functionality, please create Issue or PR to this 
 ### Local development steps
 These are necessary steps for local contribution and testing of _vscode-uitests-tooling_ package.
 
-##### Inside _vscode-uitests-tooling_ package run
+##### Inside developed project run
 ```
-> npm run dev
-```
-
-##### Inside developed extension run
-```
-> npm uninstall -D vscode-uitests-tooling
-> npm install -D file:../vscode-uitests-tooling/vscode-uitests-tooling-{x.x.x}.tgz
+> npm link ../vscode-uitests-tooling && npm update
 ```
