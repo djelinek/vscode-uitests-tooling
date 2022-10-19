@@ -18,7 +18,7 @@
 		"experimentalDecorators": true,
 		"resolveJsonModule": true,
 		"declaration": true,
-		"useUnknownInCatchVariables": false,
+		"useUnknownInCatchVariables": false
 	},
 	"include": [
 		"src"

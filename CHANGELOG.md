@@ -1,5 +1,9 @@
 # Change Log
 
+## 3.0.0 (October 19, 2022)
+
+- Allow users to install project as Git dependency
+
 ## 2.3.5 (February 27, 2023)
 
 - Switched Markeplace open method from Title bar to command palette to workaround extester reported bug
