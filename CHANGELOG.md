@@ -1,5 +1,8 @@
 # Change Log
 
+## 3.0.0 (October 19, 2022)
+	- Allow users to install project as Git dependency
+
 ## 2.3.3 (September 19, 2022)
 	- Bump 'vscode-extension-tester' dependency to latest '5.0.0' version
 	- Updated all vulnerable packages versions

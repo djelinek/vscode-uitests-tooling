@@ -2,7 +2,7 @@
 	"name": "vscode-uitests-tooling",
 	"displayName": "Tooling for VS Code UI Tests by Red Hat",
 	"description": "UI Tests Utils for VS Code extensions",
-	"version": "2.3.3",
+	"version": "3.0.0",
 	"author": "Dominik Jelinek",
 	"license": "Apache-2.0",
 	"main": "out/index.js",
@@ -39,9 +39,9 @@
 		"prepack": "npm run build",
 		"compile": "tsc -p ./",
 		"build": "tsc",
-		"clean": "rm -rf out node_modules *.tgz",
+		"clean": "rimraf out/",
 		"lint": "eslint 'src/**/*.ts'",
-		"dev": "npm run clean && npm install && npm run compile && npm pack"
+		"dev": "npm run clean && npm install && npm run compile && npm link"
 	},
 	"dependencies": {
 		"chai": "^4.2.0",
@@ -58,6 +58,7 @@
 		"@typescript-eslint/eslint-plugin": "^5.9.0",
 		"@typescript-eslint/parser": "^5.9.0",
 		"eslint": "^8.6.0",
+		"rimraf": "^3.0.2",
 		"typescript": "^4.5.4",
 		"vscode-extension-tester": "^5.0.0"
 	},
