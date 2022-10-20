@@ -27,7 +27,7 @@ function mochaHandler(name: string, fn?: Func | AsyncFunc) {
 				reject(error);
 			}
 		});
-	}
+	};
 };
 
 export function before(name: string, fn?: Func | AsyncFunc) {
