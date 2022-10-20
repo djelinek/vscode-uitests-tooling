@@ -95,6 +95,8 @@ class Marketplace {
 	 * @returns marketplace handler
 	 */
 	public static async open(timeout?: number): Promise<Marketplace> {
+		console.log("Opening Marketplace from GIT!!!...");
+
 		let isMac = platform === "darwin";
 		return await repeat(async () => {
 			if(isMac) {

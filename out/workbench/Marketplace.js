@@ -111,7 +111,8 @@ class Marketplace {
      */
     static open(timeout) {
         return __awaiter(this, void 0, void 0, function* () {
-            var isMac = process_1.platform === "darwin";
+            console.log("Opening Marketplace from GIT!!!...");
+            let isMac = process_1.platform === "darwin";
             return yield (0, Repeat_1.repeat)(() => __awaiter(this, void 0, void 0, function* () {
                 if (isMac) {
                     yield new vscode_extension_tester_1.Workbench().executeCommand('View: Open View');
