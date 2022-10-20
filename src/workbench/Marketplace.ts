@@ -95,7 +95,7 @@ class Marketplace {
 	 * @returns marketplace handler
 	 */
 	public static async open(timeout?: number): Promise<Marketplace> {
-		var isMac = platform === "darwin";
+		let isMac = platform === "darwin";
 		return await repeat(async () => {
 			if(isMac) {
 				await new Workbench().executeCommand('View: Open View');

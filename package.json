@@ -37,7 +37,7 @@
 	"scripts": {
 		"vscode:prepublish": "npm install && npm run compile",
 		"prepack": "npm run build",
-		"compile": "tsc -p ./",
+		"compile": "tsc -p ./ && npm run lint",
 		"build": "tsc",
 		"clean": "rimraf out/",
 		"lint": "eslint 'src/**/*.ts'",
