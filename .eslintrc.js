@@ -12,7 +12,6 @@ module.exports = {
         "@typescript-eslint"
     ],
     "rules": {
-        "@typescript-eslint/class-name-casing": "error",
         "@typescript-eslint/indent": [
             "error",
             "tab"
