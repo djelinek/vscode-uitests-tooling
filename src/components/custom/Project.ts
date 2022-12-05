@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as fsExtra from "fs-extra";
-import { Dialog } from "./Dialog";
+import { FileSystem } from "../../utils/FileSystem";
 
 /**
  * Project class represents VS code workspace. 
@@ -58,7 +58,7 @@ class Project {
 			return;
 		}
 		this._isOpen = true;
-		await Dialog.openFolder(this._path);
+		await FileSystem.openFolder(this._path);
 	}
 
 	/**
@@ -69,7 +69,7 @@ class Project {
 			return;
 		}
 		this._isOpen = false;
-		await Dialog.closeFolder();
+		await FileSystem.closeFolder();
 	}
 
 	/**

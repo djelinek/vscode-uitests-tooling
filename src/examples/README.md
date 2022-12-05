@@ -1,0 +1,1 @@
+# VSCode UI tests Tooling - Examples
