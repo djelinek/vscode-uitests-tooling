@@ -3,7 +3,7 @@ import { Workbench } from 'vscode-extension-tester';
 /**
  * @author jkopriva
  */
-class NotificationCenterExt {
+class NotificationCenter {
 
 	public async clearNotifications() {
 		try {
@@ -16,4 +16,4 @@ class NotificationCenterExt {
 	}
 }
 
-export { NotificationCenterExt };
+export { NotificationCenter };

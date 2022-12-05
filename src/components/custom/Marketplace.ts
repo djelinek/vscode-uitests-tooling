@@ -1,6 +1,6 @@
 import { SideBarView, ExtensionsViewItem, ExtensionsViewSection, InputBox, Workbench } from "vscode-extension-tester";
-import { ActivityBar } from "..";
-import { repeat } from "../conditions/Repeat";
+import { ActivityBar } from "../..";
+import { repeat } from "../../conditions/Repeat";
 
 type ExtensionCategories = "Disabled" | "Enabled" | "Installed" | "Outdated" | "Other Recommendations" | "Marketplace";
 

@@ -1,42 +1,48 @@
 'use strict';
 
-// Mocha
-export * from './utils/Mocha';
-
-// components
-export * from './components/Dialog';
-export * from './components/Input';
-export * from './components/Project';
+/**
+ * components
+ */
 export * from './components/activityBar/ActivityBar';
-export * from './components/workbench/Workbench';
 
-// conditions
-export * from './conditions/DefaultWait';
-export * from './conditions/NotificationWait';
-export * from './conditions/WaitUntil';
-export * from './conditions/TimeoutPromise';
-export * from './conditions/Repeat';
+export * from './components/bottomBar/OutputView';
 
-// unique for extensions
-export * from './extensions/AtlasMapExt';
-export * from './extensions/ProjectInitializerExt';
+export * from './components/custom/CommandPalette';
+export * from './components/custom/Marketplace';
+export * from './components/custom/Project';
 
-// logs utils
-export * from './logs/LogAnalyzer';
+export * from './components/dialog/InputBoxOpenDialogs';
+export * from './components/dialog/IOpenDialog';
 
-// process
-export * from './process/AsyncCommandProcess';
-export * from './process/AsyncNodeProcess';
-export * from './process/AsyncProcess';
-export * from './process/Maven';
-
-// workbench
-export * from './workbench/CommandPalette';
-export * from './workbench/Marketplace';
-export * from './workbench/NotificationCenterExt';
-export * from './workbench/OutputView';
-export * from './workbench/StatusBarExt';
-
-// editor
 export * from './components/editor/ContentAssist';
 export * from './components/editor/TextEditor';
+
+export * from './components/statusBar/StatusBar';
+
+export * from './components/workbench/Input';
+export * from './components/workbench/NotificationCenter';
+export * from './components/workbench/Workbench';
+
+/**
+ * conditions
+ */
+export * from './conditions/DefaultWait';
+export * from './conditions/NotificationWait';
+export * from './conditions/Repeat';
+export * from './conditions/TimeoutPromise';
+export * from './conditions/WaitUntil';
+
+/**
+ * extensions - Camel Tooling for VSCode 
+ */
+// export * as camelk from './extensions/camelk';
+// export * as dap from './extensions/dap';
+// export * as lsp from './extensions/lsp';
+
+/**
+ * utils
+ */
+export * from './utils/FileSystem';
+export * from './utils/LogAnalyzer';
+export * from './utils/Mocha';
+export * from './utils//PathUtils';

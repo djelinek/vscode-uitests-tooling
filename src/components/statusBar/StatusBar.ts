@@ -1,10 +1,10 @@
-import { StatusBar, By } from "vscode-extension-tester";
+import { StatusBar as IStatusBar, By } from "vscode-extension-tester";
 
 /**
  * Page object for the status bar at the bottom
  * @author Dominik Jelinek <djelinek@redhat.com>
  */
-class StatusBarExt extends StatusBar {
+class StatusBar extends IStatusBar {
 
 	protected readonly LSP_BAR_ID: string = 'redhat.vscode-apache-camel';
 
@@ -25,4 +25,4 @@ class StatusBarExt extends StatusBar {
 	}
 }
 
-export { StatusBarExt };
+export { StatusBar };

@@ -1,10 +1,10 @@
-import { TitleBar, InputBox } from 'vscode-extension-tester';
+import { TitleBar, InputBox, Workbench } from 'vscode-extension-tester';
 
 /**
  * Handles File Dialogs 
  * @author Dominik Jelinek <djelinek@redhat.com>
  */
-class Dialog {
+class FileSystem {
 
 	private constructor() {}
 	
@@ -14,7 +14,7 @@ class Dialog {
 	 * @returns resolved dialog
 	 */
 	public static async openFile(path?: string): Promise<InputBox> {
-		const input = await Dialog.open(path);
+		const input = await FileSystem.open(path);
 		await input.confirm();
 		return input;
 	}
@@ -39,7 +39,7 @@ class Dialog {
 	 * @returns resolved dialog
 	 */
 	public static async openFolder(path?: string): Promise<InputBox> {
-		const input = await Dialog.open(path);
+		const input = await FileSystem.open(path);
 		await input.confirm();
 		return input;
 	}
@@ -53,13 +53,20 @@ class Dialog {
 	}
 
 	/**
+	 * It will revert changes made in currently opened file before save
+	 */
+	 public static async revertFileChanges(): Promise<void> {
+		await new Workbench().executeCommand('File: Revert File');
+	}
+
+	/**
 	 * Selects path and confirms dialog
 	 * @param path path to be inputted to dialog
 	 * @returns promise which resolves with dialog
 	 * @author Marian Lorinc <mlorinc@redhat.com>
 	 */
 	public static async confirm(path?: string): Promise<InputBox> {
-		const dialog = await Dialog.open(path);
+		const dialog = await FileSystem.open(path);
 		await dialog.confirm();
 		return dialog;
 	}
@@ -71,7 +78,7 @@ class Dialog {
 	 * @author Marian Lorinc <mlorinc@redhat.com>
 	 */
 	public static async cancel(path?: string): Promise<InputBox> {
-		const dialog = await Dialog.open(path);
+		const dialog = await FileSystem.open(path);
 		await dialog.cancel();
 		return dialog;
 	}
@@ -86,4 +93,4 @@ class Dialog {
 	}
 }
 
-export { Dialog };
+export { FileSystem };
