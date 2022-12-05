@@ -16,7 +16,7 @@ UI Tests Tooling for VS Code extensions is a package built on [VS Code Extension
       ```
 	- or directly from GIT repository
       ```
-      npm install --save-dev djelinek/vscode-uitests-tooling#git-devel
+      npm install --save-dev djelinek/vscode-uitests-tooling#git
       ```
 
 ## Local development
@@ -40,7 +40,7 @@ Do not forget to include `/out/**` folder in git changes and put them into your 
 ### Get new changes from Git
 When you need to pull new changes from `vscode-uitests-tooling` Git repository into your project dependency, you just need to reinstall it.
 ```
-npm i -D djelinek/vscode-uitests-tooling#git-devel --no-save
+npm i -D djelinek/vscode-uitests-tooling#git --no-save
 ```
 `--no-save` flag ensures that the `package-lock.json` file won't be changed with new dependency Hash after each reinstall. To easier that process you can set a new script in your `package.json` scripts section, which you simply execute before each UI tests run (see [Example](#example) bellow).
 
@@ -49,7 +49,7 @@ Example how to use this library in day-2-day work in some project where you want
 
 1. Git clone `vscode-uitests-tooling` on same dir level as your project
     ```
-    git clone -b git-devel https://github.com/djelinek/vscode-uitests-tooling.git
+    git clone -b git https://github.com/djelinek/vscode-uitests-tooling.git
     ```
 
 2. Modify `package.json` scripts section and add new scripts which will handle
@@ -60,7 +60,7 @@ Example how to use this library in day-2-day work in some project where you want
 		```
 		"scripts": {
 			"uitest-run": "extest setup-and-run './out/src/ui-test/*extension_test.js'",
-			"ci-test": "npm i -D djelinek/vscode-uitests-tooling#git-devel --no-save && npm run uitest-run",
+			"ci-test": "npm i -D djelinek/vscode-uitests-tooling#git --no-save && npm run uitest-run",
 			"preui-test": "cd ../vscode-uitests-tooling && npm run dev",
 			"ui-test": "rimraf node_modules/vscode-uitests-tooling && npm link vscode-uitests-tooling --install-links && npm run uitest-run"
 		},
