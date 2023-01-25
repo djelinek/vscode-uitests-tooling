@@ -1,0 +1,55 @@
+name: Main CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Compile
+        run: npm run compile
+
+  check:
+    if: always()
+    runs-on: ubuntu-latest
+    name: Status Check
+    needs: [ test ]
+    steps:
+      - name: Print Test Result
+        run: |
+          echo result = ${{ needs.test.result }}
+      - name: Status Check - success
+        if: ${{ needs.test.result == 'success' }}
+        run: |
+          echo "All tests successfully completed!"
+          exit 0
+      - name: Status Check - failure
+        if: ${{ needs.test.result != 'success' }}
+        run: |
+          echo "Status Check failed!"
+          exit 1
