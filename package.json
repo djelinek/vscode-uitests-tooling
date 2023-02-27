@@ -2,7 +2,7 @@
 	"name": "vscode-uitests-tooling",
 	"displayName": "Tooling for VS Code UI Tests by Red Hat",
 	"description": "UI Tests Utils for VS Code extensions",
-	"version": "2.3.3",
+	"version": "2.3.4",
 	"author": "Dominik Jelinek",
 	"license": "Apache-2.0",
 	"main": "out/index.js",
