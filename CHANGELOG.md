@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.3.5 (February 27, 2023)
+
+- Switched Markeplace open method from Title bar to command palette to workaround extester reported bug
+
 ## 2.3.4 (February 27, 2023)
 
 - Bump 'vscode-extension-tester' dependency to latest '5.4.0' version
@@ -35,8 +39,7 @@
 
 ## 2.1.0 (May 26, 2021)
 
- - Fix process kill on Windows
-
+- Fix process kill on Windows
 - Rework 'Open folder' feature
 - Add screenshot feature to 'before' and 'after' Mocha handlers
 - Improve stability of 'Marketplace' component
