@@ -224,14 +224,16 @@ abstract class AsyncProcess {
 		const waitPromise = this.wait(ms);
 		
 		const killPromise = new Promise<void>((resolve, reject) => {
-			killProcess(this.process!.pid, force ? "SIGKILL" : "SIGTERM", (e?: Error) => {
-				if (e) {
-					reject(e);
-				}
-				else {
-					resolve();
-				}
-			});
+			if(this.process?.pid !== undefined) {
+				killProcess(this.process.pid, force ? "SIGKILL" : "SIGTERM", (e?: Error) => {
+					if (e) {
+						reject(e);
+					}
+					else {
+						resolve();
+					}
+				});
+			}
 		});
 
 		return Promise.all([killPromise, waitPromise]).then(([_, code]) => code);

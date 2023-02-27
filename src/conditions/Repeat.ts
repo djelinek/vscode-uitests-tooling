@@ -71,12 +71,12 @@ export async function repeat<T>(func: (() => T | PromiseLike<T>), options?: Repe
 					start = Date.now();
 				}
 				log("Threshold not reached");
-				plannedTask = setImmediate(closure, cnt, resolve, reject);
+				plannedTask = setImmediate(closure, cnt, resolve, reject, undefined);
 			}
 			else {
 				start = 0;
 				if (run) {
-					plannedTask = setImmediate(closure, cnt !== undefined ? cnt - 1 : undefined, resolve, reject);
+					plannedTask = setImmediate(closure, cnt !== undefined ? cnt - 1 : undefined, resolve, reject, undefined);
 				}
 				else {
 					plannedTask = undefined;

@@ -23,7 +23,7 @@ class DefaultWait {
  	* 
  	* @param ms sleep time
  	*/
-	public static sleep(ms: number): Promise<NodeJS.Timeout> {
+	public static sleep(ms: number) {
 		return new Promise(resolve => setTimeout(resolve, ms));
 	}
 }
