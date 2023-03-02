@@ -14,6 +14,7 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.errors = void 0;
 /**
  * components
  */
@@ -51,4 +52,5 @@ __exportStar(require("./utils/FileSystem"), exports);
 __exportStar(require("./utils/LogAnalyzer"), exports);
 __exportStar(require("./utils/Mocha"), exports);
 __exportStar(require("./utils/PathUtils"), exports);
+exports.errors = require("./utils/Errors");
 //# sourceMappingURL=index.js.map

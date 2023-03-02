@@ -10,6 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TimeoutError = exports.repeat = exports.Repeat = exports.Threshold = exports.RepeatUnsuccessfulException = exports.RepeatExitError = exports.RepeatError = exports.LoopStatus = void 0;
+const __1 = require("..");
 const TimeoutPromise_1 = require("./TimeoutPromise");
 Object.defineProperty(exports, "TimeoutError", { enumerable: true, get: function () { return TimeoutPromise_1.TimeoutError; } });
 var LoopStatus;
@@ -132,7 +133,7 @@ const FUNCTION_RESULT_KEYS = new Set(['value', 'delay', 'loopStatus']);
  */
 class Repeat {
     constructor(func, options) {
-        var _a, _b, _c;
+        var _a, _b, _c, _d;
         this.func = func;
         this.options = options;
         this._run = false;
@@ -143,6 +144,7 @@ class Repeat {
         this._id = (_b = options === null || options === void 0 ? void 0 : options.id) !== null && _b !== void 0 ? _b : Repeat.ID_GENERATOR.next().value;
         this.threshold = new Threshold((_c = options === null || options === void 0 ? void 0 : options.threshold) !== null && _c !== void 0 ? _c : 0);
         this._message = options === null || options === void 0 ? void 0 : options.message;
+        this._ignoreErrors = (_d = options === null || options === void 0 ? void 0 : options.ignoreErrors) !== null && _d !== void 0 ? _d : [];
         this.loop = this.loop.bind(this);
         this.cleanup = this.cleanup.bind(this);
     }
@@ -188,7 +190,12 @@ class Repeat {
                 }
             }
             catch (e) {
-                this.reject(e);
+                if (!__1.errors.is(e, ...this._ignoreErrors)) {
+                    this.reject(e);
+                }
+                else {
+                    this.scheduleNextLoop();
+                }
             }
         });
     }

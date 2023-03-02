@@ -1,8 +1,15 @@
+import { errors } from '..';
+import { ErrorType } from '../utils/Errors';
 import { Rejecter, Resolver, TimeoutError, TimeoutPromise } from './TimeoutPromise';
 
 type NonUndefined<T> = T extends undefined ? never : T;
 
 export interface RepeatArguments {
+	/**
+	 * Errors to be ignored by the loop.
+	 */
+	ignoreErrors?: ErrorType[];
+
 	/**
 	 * Repeat timeout after promise is rejected. If undefined function will be repeated <count> times or infinitely.
 	 */
@@ -180,12 +187,14 @@ export class Repeat<T> {
 	private _hasStarted: boolean = false;
 	private _finishedLoop: boolean = false;
 	private _usingExplicitLoopSignaling: boolean = false;
+	private _ignoreErrors: ErrorType[];
 
 	constructor(protected func: (() => T | PromiseLike<T> | RepeatLoopResult<T> | PromiseLike<RepeatLoopResult<T>>), protected options?: RepeatArguments) {
 		this._timeout = options?.timeout ?? Repeat.DEFAULT_TIMEOUT;
 		this._id = options?.id ?? Repeat.ID_GENERATOR.next().value;
 		this.threshold = new Threshold(options?.threshold ?? 0);
 		this._message = options?.message;
+		this._ignoreErrors = options?.ignoreErrors ?? [];
 		this.loop = this.loop.bind(this);
 		this.cleanup = this.cleanup.bind(this);
 	}
@@ -237,7 +246,12 @@ export class Repeat<T> {
 			}
 		}
 		catch (e) {
-			this.reject(e);
+			if (!errors.is(e, ...this._ignoreErrors)) {
+				this.reject(e);
+			}
+			else {
+				this.scheduleNextLoop();
+			}
 		}
 	}
 

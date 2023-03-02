@@ -32,3 +32,4 @@ export * from './utils/FileSystem';
 export * from './utils/LogAnalyzer';
 export * from './utils/Mocha';
 export * from './utils/PathUtils';
+export * as errors from './utils/Errors';
