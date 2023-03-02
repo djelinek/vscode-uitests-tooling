@@ -1,4 +1,5 @@
 import { TimeoutError } from './TimeoutPromise';
+declare type NonUndefined<T> = T extends undefined ? never : T;
 export interface RepeatArguments {
     /**
      * Repeat timeout after promise is rejected. If undefined function will be repeated <count> times or infinitely.
@@ -19,15 +20,6 @@ export interface RepeatArguments {
      */
     ignoreLoopError?: boolean;
 }
-export declare class Threshold {
-    private start;
-    private interval;
-    private resetCounter;
-    constructor(interval: number);
-    reset(): void;
-    hasFinished(): boolean;
-    get resetCount(): number;
-}
 export declare enum LoopStatus {
     LOOP_DONE = 0,
     LOOP_UNDONE = 1
@@ -42,6 +34,24 @@ export declare class RepeatError extends Error {
 export declare class RepeatExitError extends Error {
 }
 export declare class RepeatUnsuccessfulException extends TimeoutError {
+}
+export declare class Threshold {
+    private start;
+    private interval;
+    private resetCounter;
+    constructor(interval: number);
+    reset(): void;
+    hasFinished(): boolean;
+    get resetCount(): number;
+}
+declare class RepeatManager {
+    private _repeats;
+    constructor();
+    get size(): number;
+    abortAll(): void;
+    add(repeat: Repeat<never>): void;
+    has(repeat: Repeat<never>): boolean;
+    remove(repeat: Repeat<never>): boolean;
 }
 /**
  * Repeat class was heavily inspired by Selenium WebDriver.wait method.
@@ -107,19 +117,22 @@ export declare class RepeatUnsuccessfulException extends TimeoutError {
 export declare class Repeat<T> {
     protected func: (() => T | PromiseLike<T> | RepeatLoopResult<T> | PromiseLike<RepeatLoopResult<T>>);
     protected options?: RepeatArguments | undefined;
-    protected timeout?: number;
-    protected id: string;
+    private static ID_GENERATOR;
+    static MANAGER: RepeatManager;
+    protected _timeout?: number;
+    protected _id: string;
     protected threshold: Threshold;
-    private message?;
+    private _message?;
     private clearTask?;
     private resolve;
     private reject;
-    private promise;
-    private run;
-    private hasStarted;
-    private finishedLoop;
-    private usingExplicitLoopSignaling;
+    private _promise;
+    private _run;
+    private _hasStarted;
+    private _finishedLoop;
+    private _usingExplicitLoopSignaling;
     constructor(func: (() => T | PromiseLike<T> | RepeatLoopResult<T> | PromiseLike<RepeatLoopResult<T>>), options?: RepeatArguments | undefined);
+    get id(): string;
     /**
      * Perform single loop of the task.
      */
@@ -128,7 +141,7 @@ export declare class Repeat<T> {
      * Execute repeat task.
      * @returns A task result.
      */
-    execute(): Promise<T>;
+    execute(): Promise<NonUndefined<T>>;
     /**
      * Abort repeat task. This function does not return anything but it makes the repeat function
      * return the given value.
@@ -136,7 +149,7 @@ export declare class Repeat<T> {
      *  Error | undefined :: Abort task and make repeat function return rejected promise.
      *  T :: Abort task but make repeat function return resolved promise with the given value.
      */
-    abort(value: Error | T | undefined): void;
+    abort(value: Error | NonUndefined<T> | undefined): void;
     /**
      * Cleanup all timers and setImmediate handlers.
      */
@@ -155,5 +168,5 @@ export declare class Repeat<T> {
  * @param options repeat options
  * @returns output value of the {@link func} function.
  */
-export declare function repeat<T>(func: (() => T | PromiseLike<T> | RepeatLoopResult<T> | PromiseLike<RepeatLoopResult<T>>), options?: RepeatArguments): Promise<T>;
+export declare function repeat<T>(func: (() => (T | PromiseLike<T> | RepeatLoopResult<T> | PromiseLike<RepeatLoopResult<T>>)), options?: RepeatArguments): Promise<NonUndefined<T>>;
 export { TimeoutError };

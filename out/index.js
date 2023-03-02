@@ -50,5 +50,5 @@ __exportStar(require("./conditions/WaitUntil"), exports);
 __exportStar(require("./utils/FileSystem"), exports);
 __exportStar(require("./utils/LogAnalyzer"), exports);
 __exportStar(require("./utils/Mocha"), exports);
-__exportStar(require("./utils//PathUtils"), exports);
+__exportStar(require("./utils/PathUtils"), exports);
 //# sourceMappingURL=index.js.map
