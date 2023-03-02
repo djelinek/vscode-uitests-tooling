@@ -31,4 +31,4 @@ export * from './conditions/WaitUntil';
 export * from './utils/FileSystem';
 export * from './utils/LogAnalyzer';
 export * from './utils/Mocha';
-export * from './utils//PathUtils';
+export * from './utils/PathUtils';
