@@ -119,6 +119,7 @@ export declare class Repeat<T> {
     protected options?: RepeatArguments | undefined;
     private static ID_GENERATOR;
     static MANAGER: RepeatManager;
+    static DEFAULT_TIMEOUT: number | undefined;
     protected _timeout?: number;
     protected _id: string;
     protected threshold: Threshold;

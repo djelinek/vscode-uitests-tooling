@@ -132,16 +132,16 @@ const FUNCTION_RESULT_KEYS = new Set(['value', 'delay', 'loopStatus']);
  */
 class Repeat {
     constructor(func, options) {
-        var _a, _b;
+        var _a, _b, _c;
         this.func = func;
         this.options = options;
         this._run = false;
         this._hasStarted = false;
         this._finishedLoop = false;
         this._usingExplicitLoopSignaling = false;
-        this._timeout = options === null || options === void 0 ? void 0 : options.timeout;
-        this._id = (_a = options === null || options === void 0 ? void 0 : options.id) !== null && _a !== void 0 ? _a : Repeat.ID_GENERATOR.next().value;
-        this.threshold = new Threshold((_b = options === null || options === void 0 ? void 0 : options.threshold) !== null && _b !== void 0 ? _b : 0);
+        this._timeout = (_a = options === null || options === void 0 ? void 0 : options.timeout) !== null && _a !== void 0 ? _a : Repeat.DEFAULT_TIMEOUT;
+        this._id = (_b = options === null || options === void 0 ? void 0 : options.id) !== null && _b !== void 0 ? _b : Repeat.ID_GENERATOR.next().value;
+        this.threshold = new Threshold((_c = options === null || options === void 0 ? void 0 : options.threshold) !== null && _c !== void 0 ? _c : 0);
         this._message = options === null || options === void 0 ? void 0 : options.message;
         this.loop = this.loop.bind(this);
         this.cleanup = this.cleanup.bind(this);
@@ -290,6 +290,7 @@ class Repeat {
 exports.Repeat = Repeat;
 Repeat.ID_GENERATOR = idGenerator();
 Repeat.MANAGER = new RepeatManager();
+Repeat.DEFAULT_TIMEOUT = undefined;
 /**
  * Repeat function until it returns truthy value. For more information
  * please see {@link Repeat}.

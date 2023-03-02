@@ -166,6 +166,7 @@ const FUNCTION_RESULT_KEYS = new Set<string>(['value', 'delay', 'loopStatus']);
 export class Repeat<T> {
 	private static ID_GENERATOR = idGenerator();
 	public static MANAGER: RepeatManager = new RepeatManager();
+	public static DEFAULT_TIMEOUT: number | undefined = undefined;
 
 	protected _timeout?: number;
 	protected _id: string;
@@ -181,7 +182,7 @@ export class Repeat<T> {
 	private _usingExplicitLoopSignaling: boolean = false;
 
 	constructor(protected func: (() => T | PromiseLike<T> | RepeatLoopResult<T> | PromiseLike<RepeatLoopResult<T>>), protected options?: RepeatArguments) {
-		this._timeout = options?.timeout;
+		this._timeout = options?.timeout ?? Repeat.DEFAULT_TIMEOUT;
 		this._id = options?.id ?? Repeat.ID_GENERATOR.next().value;
 		this.threshold = new Threshold(options?.threshold ?? 0);
 		this._message = options?.message;
