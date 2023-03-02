@@ -1,6 +1,11 @@
+import { ErrorType } from '../utils/Errors';
 import { TimeoutError } from './TimeoutPromise';
 declare type NonUndefined<T> = T extends undefined ? never : T;
 export interface RepeatArguments {
+    /**
+     * Errors to be ignored by the loop.
+     */
+    ignoreErrors?: ErrorType[];
     /**
      * Repeat timeout after promise is rejected. If undefined function will be repeated <count> times or infinitely.
      */
@@ -132,6 +137,7 @@ export declare class Repeat<T> {
     private _hasStarted;
     private _finishedLoop;
     private _usingExplicitLoopSignaling;
+    private _ignoreErrors;
     constructor(func: (() => T | PromiseLike<T> | RepeatLoopResult<T> | PromiseLike<RepeatLoopResult<T>>), options?: RepeatArguments | undefined);
     get id(): string;
     /**
