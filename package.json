@@ -59,10 +59,10 @@
 		"@typescript-eslint/parser": "^5.53.0",
 		"eslint": "^8.35.0",
 		"typescript": "^4.9.5",
-		"vscode-extension-tester": "^5.4.0"
+		"vscode-extension-tester": "^5.5.0"
 	},
 	"peerDependencies": {
 		"mocha": ">=5.2.0",
-		"vscode-extension-tester": "^5.4.0"
+		"vscode-extension-tester": "^5.5.0"
 	}
 }
