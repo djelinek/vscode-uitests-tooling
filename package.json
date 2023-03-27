@@ -48,7 +48,8 @@
 		"clipboardy": "^2.3.0",
 		"fs-extra": "^8.1.0",
 		"sanitize-filename": "^1.6.3",
-		"tree-kill": "^1.2.2"
+		"tree-kill": "^1.2.2",
+		"vscode-extension-tester": "^5.5.2"
 	},
 	"devDependencies": {
 		"@types/chai": "^4.2.3",
@@ -59,11 +60,9 @@
 		"@typescript-eslint/parser": "^5.9.0",
 		"eslint": "^8.6.0",
 		"rimraf": "^3.0.2",
-		"typescript": "^4.5.4",
-		"vscode-extension-tester": "^5.0.0"
+		"typescript": "^4.5.4"
 	},
 	"peerDependencies": {
-		"mocha": ">=5.2.0",
-		"vscode-extension-tester": "^5.0.0"
+		"mocha": ">=5.2.0"
 	}
 }
