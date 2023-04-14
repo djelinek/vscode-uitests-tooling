@@ -48,3 +48,5 @@ export * from './utils/FileSystem';
 export * from './utils/LogAnalyzer';
 export * from './utils/PathUtils';
 export * as errors from './utils/Errors';
+export * as resources from './utils/Resources';
+export * as workspaces from './utils/Workspace';
