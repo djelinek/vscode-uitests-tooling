@@ -39,9 +39,8 @@
 		"prepack": "npm run build",
 		"compile": "tsc -p ./ && npm run lint",
 		"build": "tsc",
-		"clean": "rimraf out/",
 		"lint": "eslint 'src/**/*.ts'",
-		"dev": "npm run clean && npm install && npm run compile && npm link"
+		"dev": "npm install && npm run compile && npm run build && npm link"
 	},
 	"dependencies": {
 		"chai": "^4.3.7",
