@@ -159,9 +159,7 @@ class FileSystemResources implements IResourceManager {
 	}
 
 	copySync(what: string, to?: string | undefined): void {
-		fs.copySync(this.getDataSource(what), this.getDestination(what, to), {
-			recursive: true
-		});
+		fs.copySync(this.getDataSource(what), this.getDestination(what, to));
 	}
 
 	restoreSync(what: string, to?: string | undefined): void {
@@ -173,9 +171,7 @@ class FileSystemResources implements IResourceManager {
 	}
 
 	async copy(what: string, to?: string): Promise<void> {
-		return fs.copy(this.getDataSource(what), this.getDestination(what, to), {
-			recursive: true
-		});
+		return fs.copy(this.getDataSource(what), this.getDestination(what, to));
 	}
 
 	async restore(what: string, to?: string): Promise<void> {
