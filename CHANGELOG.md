@@ -1,8 +1,13 @@
 # Change Log
 
-## 3.0.0 (October 19, 2022)
+## 3.0.0 (May 02, 2023)
 
-- Allow users to install project as Git dependency
+- Export vscode-extension-tester
+- Bump all inner dependencies
+- Add Workspace and Resource API
+- Add Repeat manager
+- Add default timeout
+- Rework package componenets structure
 
 ## 2.3.5 (February 27, 2023)
 

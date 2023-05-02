@@ -4,3 +4,4 @@ node_modules
 *.tgz
 test-resources
 test-extensions
+.npmrc
