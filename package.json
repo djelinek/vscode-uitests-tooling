@@ -51,7 +51,7 @@
 		"vscode-extension-tester": "^5.5.3"
 	},
 	"devDependencies": {
-		"@types/chai": "^4.3.4",
+		"@types/chai": "^4.3.5",
 		"@types/fs-extra": "^11.0.1",
 		"@types/mocha": "^10.0.1",
 		"@types/node": "^16.18.25",
