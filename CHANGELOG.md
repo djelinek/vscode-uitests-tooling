@@ -1,5 +1,11 @@
 # Change Log
 
+## 3.0.1 (May 31, 2023)
+
+- Upgrade vscode-extension-tester to version 5.6.0
+- Fix FileSystemResources Creates Extra Folders and Methods use these folders by defaul
+- Updated depedendencies and devDependencies versions
+
 ## 3.0.0 (May 02, 2023)
 
 - Export vscode-extension-tester
