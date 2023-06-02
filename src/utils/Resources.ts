@@ -10,13 +10,15 @@ export class UnsupportedResourceManager extends Error { }
 
 export interface IResourceManager {
 	/**
-	 * Remove files from resources directory.
+	 * Delete resource folder.
 	 */
-	cleanup(): Promise<void>;
+	deleteResourceFolder(): Promise<void>;
+
 	/**
-	 * Remove files from resources directory.
+	 * Delete resource folder.
 	 */
-	cleanupSync(): void;
+	deleteResourceFolderSync(): void;
+
 	/**
 	 * Copy a file/folder from resources folder to workspace folder.
 	 * @param what File path relative to resources path.
@@ -32,15 +34,15 @@ export interface IResourceManager {
 	 */
 	copySync(what: string, to?: string): void;
 	/**
-	 * Delete a file/folder from resources directory.
+	 * Delete a file/folder from workspace directory.
 	 * @param what File to be deleted. Path must be relative.
 	 */
-	deleteFromResources(what: string): Promise<void>;
+	delete(what: string): Promise<void>;
 	/**
-	 * Delete a file/folder from resources directory.
+	 * Delete a file/folder from workspace directory.
 	 * @param what File to be deleted. Path must be relative.
 	 */
-	deleteFromResourcesSync(what: string): void;
+	deleteSync(what: string): void;
 }
 
 class FileSystemResources implements IResourceManager {
@@ -74,28 +76,32 @@ class FileSystemResources implements IResourceManager {
 		return path.join(this.workspace.path, to);
 	}
 
-	cleanup(): Promise<void> {
+	private getResourceSource(what: string): string {
+		return path.join(this.path, what);
+	}
+
+	deleteResourceFolder(): Promise<void> {
 		return fs.remove(this.path);
 	}
 
-	cleanupSync(): void {
+	deleteResourceFolderSync(): void {
 		return fs.removeSync(this.path);
 	}
 
-	async deleteFromResources(what: string): Promise<void> {
+	async delete(what: string): Promise<void> {
 		return fs.remove(this.getDestination(what, undefined));
 	}
 
-	deleteFromResourcesSync(what: string): void {
+	deleteSync(what: string): void {
 		fs.removeSync(this.getDestination(what, undefined));
 	}
 
 	async copy(what: string, to?: string): Promise<void> {
-		return fs.copy(this.getDestination(what, undefined), this.getDestination(what, to));
+		return fs.copy(this.getResourceSource(what), this.getDestination(what, to));
 	}
 
-	copySync(what: string, to?: string | undefined): void {
-		fs.copySync(this.getDestination(what, undefined), this.getDestination(what, to));
+	copySync(what: string, to?: string): void {
+		fs.copySync(this.getResourceSource(what), this.getDestination(what, to));
 	}
 }
 
