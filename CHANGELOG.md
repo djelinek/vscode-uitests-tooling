@@ -1,5 +1,15 @@
 # Change Log
 
+## 4.0.0
+
+> June 07 2023
+
+- Bump eslint to 5.59.9
+- Upversion vscode-extension-tester to 5.7.0
+- Bump eslint from 8.41.0 to 8.42.0
+- Bump typescript from 5.0.4 to 5.1.3
+- Fix integration between Resource and Workspace manager
+
 ## 3.0.1 (May 31, 2023)
 
 - Upgrade vscode-extension-tester to version 5.6.0
