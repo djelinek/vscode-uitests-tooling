@@ -1,4 +1,4 @@
-import * as clipboardy from 'clipboardy';
+import clipboardy from 'clipboardy';
 import * as path from 'path';
 import { InputBox, Key } from 'vscode-extension-tester';
 import { IOpenDialog } from './IOpenDialog';
