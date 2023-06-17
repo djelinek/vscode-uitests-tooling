@@ -1,5 +1,14 @@
 # Change Log
 
+## 4.0.2
+
+> June 16 2023
+
+- Upversion vscode-extension-tester to 5.8.0
+- Bump @types/node to 16.18.35
+- Bump clipboardy to 3.0.0
+- Bump eslint to 5.59.11
+
 ## 4.0.1
 
 > June 08 2023
