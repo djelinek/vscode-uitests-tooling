@@ -1,4 +1,3 @@
-import clipboardy from 'clipboardy';
 import * as path from 'path';
 import { InputBox, Key } from 'vscode-extension-tester';
 import { IOpenDialog } from './IOpenDialog';
@@ -6,6 +5,7 @@ import { repeat } from '../../conditions/Repeat';
 
 export class InputBoxOpenDialog extends InputBox implements IOpenDialog {
 	async selectPath(filePath: string, timeout: number = 15000): Promise<void> {
+		const clipboardy = (await import('clipboardy')).default;
 		if (path.isAbsolute(filePath) === false) {
 			throw new Error(`Open dialog path must be absolute. Got: "${filePath}".`);
 		}

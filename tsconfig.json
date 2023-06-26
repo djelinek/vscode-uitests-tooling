@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		"module": "commonjs",
+		"module": "Node16",
 		"target": "es6",
 		"outDir": "out",
 		"lib": [
@@ -21,7 +21,8 @@
 		"useUnknownInCatchVariables": false
 	},
 	"include": [
-		"src"
+		"src",
+		".eslintrc.js"
 	],
 	"exclude": [
 		"node_modules",
