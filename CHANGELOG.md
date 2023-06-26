@@ -1,5 +1,16 @@
 # Change Log
 
+## 4.0.3
+
+> June 26 2023
+
+- Fix compilation errors of clipboardy to use dynamic import
+- Bump semver to 7.5.3
+- Bump node to 16.18.36
+- Bump eslint to 8.43.0
+- Bump eslint/eslint-plugin to 5.60.0
+- Bump eslint/parser to 5.60.0
+
 ## 4.0.2
 
 > June 16 2023
