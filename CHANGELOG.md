@@ -1,5 +1,16 @@
 # Change Log
 
+## 4.0.4
+
+> August 04 2023
+
+- Upversion vscode-extension-tester to 5.9.0
+- Bump @typescript-eslint/eslint-plugin to 6.2.1
+- Bump eslint from 8.44.0 to 8.46.0
+- Bump @types/node from 16.18.38 to 16.18.39
+- Bump semver from 5.7.1 to 5.7.2
+- Bump typescript from 5.1.3 to 5.1.6
+
 ## 4.0.3
 
 > June 26 2023
