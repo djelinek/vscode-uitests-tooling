@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.0.5
+
+> August 04 2023
+
+- Downgrade selenium-webdriver to 4.10.0 to ensure compatibility with vscode-extension-tester
+
 ## 4.0.4
 
 > August 04 2023
