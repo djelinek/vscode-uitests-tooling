@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.0.6
+
+> August 22 2023
+
+- Upversion vscode-extension-tester to 5.9.1
+
 ## 4.0.5
 
 > August 04 2023
