@@ -43,7 +43,7 @@
 		"dev": "npm install && npm run compile && npm run build && npm link"
 	},
 	"dependencies": {
-		"chai": "^4.3.7",
+		"chai": "^4.3.10",
 		"clipboardy": "^3.0.0",
 		"fs-extra": "^11.1.1",
 		"sanitize-filename": "^1.6.3",
@@ -51,7 +51,7 @@
 		"vscode-extension-tester": "^5.9.1"
 	},
 	"devDependencies": {
-		"@types/chai": "^4.3.5",
+		"@types/chai": "^4.3.6",
 		"@types/fs-extra": "^11.0.1",
 		"@types/mocha": "^10.0.1",
 		"@types/node": "^16.18.41",
