@@ -1,5 +1,17 @@
 # Change Log
 
+## 4.0.7
+
+> October 10 2023
+
+- Bump vscode-extension-tester from 5.9.1 to 5.10.0
+- Bump @types/node from 16.18.41 to 18.18.4
+- Bump @typescript-eslint/eslint-plugin from 6.4.1 to 6.7.5
+- Bump chai and @types/chai
+- Bump get-func-name from 2.0.0 to 2.0.2
+- Bump eslint from 8.47.0 to 8.51.0
+- Bump typescript from 5.1.6 to 5.2.2
+
 ## 4.0.6
 
 > August 22 2023
