@@ -1,5 +1,12 @@
 # Change Log
 
+## 4.0.8
+
+> November 28 2023
+
+- Bump vscode-extension-tester from 5.10.0 to 6.0.0
+- Bump package dependencies and devDependencies
+
 ## 4.0.7
 
 > October 10 2023
