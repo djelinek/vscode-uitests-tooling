@@ -1,1 +1,1 @@
-# VSCode UI tests Tooling - Examples
+# UI tests Utils for Camel Tooling - Examples

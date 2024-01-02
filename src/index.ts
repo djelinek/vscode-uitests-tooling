@@ -35,7 +35,7 @@ export * from './conditions/TimeoutPromise';
 export * from './conditions/WaitUntil';
 
 /**
- * extensions - Camel Tooling for VSCode 
+ * extensions - Camel Tooling extensions for Visual Studio Code
  */
 // export * as camelk from './extensions/camelk';
 // export * as dap from './extensions/dap';

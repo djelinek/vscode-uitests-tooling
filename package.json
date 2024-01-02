@@ -1,7 +1,7 @@
 {
 	"name": "vscode-uitests-tooling",
-	"displayName": "Tooling for VS Code UI Tests by Red Hat",
-	"description": "UI Tests Utils for VS Code extensions",
+	"displayName": "UI tests Utils for Camel Tooling",
+	"description": "UI tests Utils for Camel Tooling extensions",
 	"version": "4.0.9",
 	"author": "Dominik Jelinek",
 	"license": "Apache-2.0",

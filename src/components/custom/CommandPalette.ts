@@ -1,7 +1,7 @@
 import { QuickOpenBox, TitleBar } from "vscode-extension-tester";
 
 /**
- * Represents command palette element in vscode
+ * Represents command palette element in VS Code
  * @author Marian Lorinc <mlorinc@redhat.com>
  */
 class CommandPalette extends QuickOpenBox {

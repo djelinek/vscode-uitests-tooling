@@ -1,15 +1,13 @@
 <h1 align="center">
   <br>
-  Visual Studio Code UI tests Tooling
+  UI tests Utils for Camel Tooling
 </h1>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/vscode-uitests-tooling"><img src="https://img.shields.io/npm/v/vscode-uitests-tooling?label=npmjs&color=orange&style=for-the-badge" alt="VSCode UI tests Utils"/></a>
+  <a href="https://www.npmjs.com/package/vscode-uitests-tooling"><img src="https://img.shields.io/npm/v/vscode-uitests-tooling?label=npmjs&color=orange&style=for-the-badge" alt="UI tests Utils for Camel Tooling"/></a>
   <a href="https://github.com/djelinek/vscode-uitests-tooling/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-Apache%202-blue.svg?style=for-the-badge&logo=appveyor" alt="License"/></a>
   <a href="https://github.com/djelinek/vscode-uitests-tooling/actions/workflows/main.yml"><img src="https://img.shields.io/github/actions/workflow/status/djelinek/vscode-uitests-tooling/main.yml?label=Main%20CI&style=for-the-badge" alt="Main CI"></a>
 </p><br/>
-
-<h2 align="center">Camel Tooling UI tests Utils for Visual Studio Code.</h2>
 
 <p align="center">
   <a href="#installation">Installation</a> •
@@ -19,7 +17,7 @@
 </p>
 
 <p align="center">
-UI Tests Tooling for VS Code extensions is a package built on <a href="https://github.com/redhat-developer/vscode-extension-tester">VS Code Extension Tester</a>. It provides more specific functions, wait conditions, sets of features and others for UI testing of VS Code extensions. We are especially aiming on <a href="https://github.com/camel-tooling">Camel Tooling</a> VS Code extensions.
+UI tests Utils for Camel tooling is a package built on <a href="https://github.com/redhat-developer/vscode-extension-tester">ExTester</a>. It provides more specific functions, wait conditions, sets of features and others for UI testing of <a href="https://github.com/camel-tooling">Camel Tooling extensions</a> for Visual Studio Code.
 </p><br/>
 
 ## Installation
@@ -27,7 +25,7 @@ UI Tests Tooling for VS Code extensions is a package built on <a href="https://g
 Install _vscode-uitests-tooling_ into your extension devDependencies:
 
 ```nodejs
-npm install --save-dev vscode-uitests-tooling
+npm install --save-dev vscode-uitests-tooling@latest
 ```
 
 ## Local development
@@ -74,13 +72,13 @@ It also means that `vscode-extension-tester` version upgrades can be done only i
 
 To use `vscode-uitests-tooling` package in version 3.0.0 you need to change just few easy things and other should stay same.
 
-1. Remove VSCode Extension Tester devDependency
+1. Remove `ExTester` devDependency
 
    ```nodejs
    npm uninstall vscode-extension-tester
    ```
 
-2. Install VSCode UI tests Tooling package in version 3.0.0
+2. Install `UI tests Utils for Camel Tooling` package in version 3.0.0
 
    ```nodejs
    npm install -D vscode-uitests-tooling@3.0.0
