@@ -43,7 +43,7 @@
 		"dev": "npm install && npm run compile && npm run build && npm link"
 	},
 	"dependencies": {
-		"chai": "^5.0.0",
+		"chai": "^5.0.3",
 		"clipboardy": "^4.0.0",
 		"fs-extra": "^11.1.1",
 		"sanitize-filename": "^1.6.3",
