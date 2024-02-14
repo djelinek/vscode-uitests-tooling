@@ -12,12 +12,12 @@ interface InputTestProperties {
 
 class Input {
 
-	private constructor(private _input: InputBox | QuickOpenBox) {}
+	private constructor(private _input: InputBox | QuickOpenBox) { }
 
 	/**
-  	* Get current text of the input field
-  	* @returns Promise resolving to text of the input field
-  	*/
+	 * Get current text of the input field
+	 * @returns Promise resolving to text of the input field
+	 */
 	public async getText(): Promise<string> {
 		return this._input.getText();
 	}
@@ -88,8 +88,8 @@ class Input {
 	// InputBox only methods
 
 	/**
-     * Get the message below the input field
-     */
+	 * Get the message below the input field
+	 */
 	public async getMessage(): Promise<string> {
 		if (this._input instanceof InputBox) {
 			return (this._input as InputBox).getMessage();
