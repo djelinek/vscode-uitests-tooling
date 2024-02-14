@@ -12,3 +12,4 @@ vsc-extension-quickstart.md
 test-resources/**
 test-extensions/**
 resources
+test-res/**
