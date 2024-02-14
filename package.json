@@ -49,12 +49,10 @@
 		"vscode-extension-tester": "^7.1.0"
 	},
 	"devDependencies": {
-		"@types/chai": "^4.3.11",
 		"@types/fs-extra": "^11.0.3",
 		"@types/mocha": "^10.0.6",
 		"@types/node": "^18.19.15",
 		"@typescript-eslint/eslint-plugin": "^6.21.0",
-		"chai": "^4.4.1",
 		"rimraf": "^5.0.5"
 	},
 	"peerDependencies": {
