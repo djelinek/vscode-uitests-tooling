@@ -1,5 +1,4 @@
 import { InputBox, QuickOpenBox, QuickPickItem } from "vscode-extension-tester";
-import { expect } from "chai";
 
 interface InputTestProperties {
 	text?: string;
@@ -122,33 +121,6 @@ class Input {
 		}
 		else {
 			throw new Error("Input field is not type of InputBox. It is probable QuickOpenBox");
-		}
-	}
-
-	/**
-	 * Tests Input element properties.
-	 * @param testProperties properties to be tested
-	 */
-	public async test(testProperties: InputTestProperties): Promise<void> {
-		if (testProperties.hasProgress !== undefined) {
-			expect(await this.hasProgress()).to.equal(testProperties.hasProgress);
-		}
-		if (testProperties.isPassword !== undefined) {
-			expect(await this.isPassword()).to.equal(testProperties.isPassword);
-		}
-		if (testProperties.message !== undefined) {
-			expect(await this.getMessage()).to.equal(testProperties.message);
-		}
-		if (testProperties.placeholder !== undefined) {
-			expect(await this.getPlaceHolder()).to.equal(testProperties.placeholder);
-		}
-		if (testProperties.quickPicks !== undefined) {
-			const quickPicks = await this.getQuickPicks();
-			const quickPickTexts = new Set(await Promise.all(quickPicks.map(pick => pick.getText())));
-			expect(quickPickTexts).to.have.keys(testProperties.quickPicks);
-		}
-		if (testProperties.text !== undefined) {
-			expect(await this.getText()).to.equal(testProperties.text);
 		}
 	}
 
