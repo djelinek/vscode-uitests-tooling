@@ -21,14 +21,13 @@
 	},
 	"include": [
 		"src",
-		".eslintrc.js"
+		".eslintrc.json"
 	],
 	"exclude": [
 		"node_modules",
 		"resources",
 		"test-resources",
 		"test-extensions",
-		"test-project",
 		".vscode-test",
 		"out"
 	]

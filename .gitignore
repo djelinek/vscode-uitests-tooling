@@ -6,3 +6,4 @@ test-resources
 test-extensions
 .npmrc
 .vscode-test
+test/utils-test-project/package-lock.json
