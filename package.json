@@ -36,12 +36,10 @@
 	},
 	"scripts": {
 		"vscode:prepublish": "npm install && npm run compile",
-		"prepack": "npm run build",
-		"compile": "tsc -p ./ && npm run lint",
-		"build": "rimraf out/ && tsc",
+		"compile": "rimraf out/ && tsc -p ./ && npm run lint",
 		"lint": "eslint src --ext .ts",
-		"dev": "npm install && npm run compile && npm run build && npm link",
-		"pretest": "npm run build && npm install --prefix test/utils-test-project",
+		"dev": "npm install && npm run compile && npm link",
+		"pretest": "npm run compile && npm install --prefix test/utils-test-project",
 		"test": "npm run ui-test --prefix test/utils-test-project"
 	},
 	"dependencies": {

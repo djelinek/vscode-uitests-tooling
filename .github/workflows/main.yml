@@ -12,8 +12,13 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
+  main:
+    name: ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, macos-latest, windows-latest ]
+      fail-fast: false
 
     steps:
       - name: Checkout Repository
@@ -28,28 +33,32 @@ jobs:
       - name: Install
         run: npm ci
 
-      - name: Build
-        run: npm run build
+      - name: Tests (macOS, windows)
+        if: matrix.os != 'ubuntu-latest'
+        run: |
+          npm test
 
-      - name: Compile
-        run: npm run compile
+      - name: Tests (linux)
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          xvfb-run --auto-servernum --server-args='-screen 0 1920x1080x24' npm test
 
   check:
     if: always()
     runs-on: ubuntu-latest
     name: Status Check
-    needs: [ test ]
+    needs: [ main ]
     steps:
       - name: Print Test Result
         run: |
-          echo result = ${{ needs.test.result }}
+          echo result = ${{ needs.main.result }}
       - name: Status Check - success
-        if: ${{ needs.test.result == 'success' }}
+        if: ${{ needs.main.result == 'success' }}
         run: |
           echo "All tests successfully completed!"
           exit 0
       - name: Status Check - failure
-        if: ${{ needs.test.result != 'success' }}
+        if: ${{ needs.main.result != 'success' }}
         run: |
           echo "Status Check failed!"
           exit 1
