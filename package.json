@@ -35,7 +35,7 @@
 		"url": "https://github.com/djelinek/vscode-uitests-tooling.git"
 	},
 	"scripts": {
-		"vscode:prepublish": "npm install && npm run compile",
+		"vscode:prepublish": "npm run compile",
 		"compile": "rimraf out/ && tsc -p ./ && npm run lint",
 		"lint": "eslint src --ext .ts",
 		"dev": "npm install && npm run compile && npm link",

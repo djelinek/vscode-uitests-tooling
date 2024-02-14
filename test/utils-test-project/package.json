@@ -25,10 +25,9 @@
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
+    "compile": "rimraf out/ && tsc -p ./ && npm run lint",
     "watch": "tsc -watch -p ./",
     "lint": "eslint src --ext ts",
-    "preui-test": "npm run compile && npm run lint",
     "ui-test": "extest setup-and-run './out/test/**/*.test.js' -u -i -r ./resources -e ./test-extensions"
   },
   "devDependencies": {
@@ -41,6 +40,7 @@
     "chai": "^4.4.1",
     "eslint": "^8.56.0",
     "mocha": "^10.3.0",
+    "rimraf": "^5.0.5",
     "typescript": "^5.3.3",
     "vscode-uitests-tooling": "file:../.."
   }
