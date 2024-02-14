@@ -7,9 +7,13 @@
     "vscode": "^1.86.0"
   },
   "categories": [
-    "Other"
+    "Testing"
   ],
-  "activationEvents": [],
+  "publisher": "uitests",
+  "repository": "https://github.com/djelinek/vscode-uitests-tooling/test/utils-test-project/",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
@@ -24,18 +28,20 @@
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "lint": "eslint src --ext ts",
-    "pretest": "npm run compile && npm run lint",
-    "test": "vscode-test"
+    "preui-test": "npm run compile && npm run lint",
+    "ui-test": "extest setup-and-run './out/test/**/*.test.js' -u -i -r ./resources -e ./test-extensions"
   },
   "devDependencies": {
-    "@types/vscode": "^1.86.0",
+    "@types/chai": "^4.3.11",
     "@types/mocha": "^10.0.6",
-    "@types/node": "18.x",
-    "@typescript-eslint/eslint-plugin": "^6.15.0",
-    "@typescript-eslint/parser": "^6.15.0",
+    "@types/node": "^18.19.15",
+    "@types/vscode": "^1.86.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.1",
+    "@typescript-eslint/parser": "^7.0.1",
+    "chai": "^4.4.1",
     "eslint": "^8.56.0",
+    "mocha": "^10.3.0",
     "typescript": "^5.3.3",
-    "@vscode/test-cli": "^0.0.4",
-    "@vscode/test-electron": "^2.3.8"
+    "vscode-uitests-tooling": "file:../.."
   }
 }
