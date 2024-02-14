@@ -40,7 +40,8 @@
 		"compile": "tsc -p ./ && npm run lint",
 		"build": "tsc",
 		"lint": "eslint src --ext .ts",
-		"dev": "npm install && npm run compile && npm run build && npm link"
+		"dev": "npm install && npm run compile && npm run build && npm link",
+		"test": "npm run test --prefix test/utils-test-project"
 	},
 	"dependencies": {
 		"clipboardy": "^4.0.0",
