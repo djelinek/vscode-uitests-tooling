@@ -45,7 +45,6 @@ export * from './conditions/WaitUntil';
  * utils
  */
 export * from './utils/FileSystem';
-export * from './utils/LogAnalyzer';
 export * from './utils/PathUtils';
 export * as errors from './utils/Errors';
 export * as resources from './utils/Resources';
