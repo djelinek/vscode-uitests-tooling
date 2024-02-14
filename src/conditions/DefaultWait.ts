@@ -18,11 +18,11 @@ class DefaultWait {
 	public static readonly TimePeriod = TimePeriod;
 
 	/**
- 	* Suspends thread if used with await keyword. When promise is used instead, it has similar
- 	* effect as setTimeout function.
- 	* 
- 	* @param ms sleep time
- 	*/
+	  * Suspends thread if used with await keyword. When promise is used instead, it has similar
+	  * effect as setTimeout function.
+	  * 
+	  * @param ms sleep time
+	  */
 	public static sleep(ms: number) {
 		return new Promise(resolve => setTimeout(resolve, ms));
 	}
