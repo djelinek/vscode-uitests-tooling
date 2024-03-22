@@ -17,7 +17,8 @@
 		"experimentalDecorators": true,
 		"resolveJsonModule": true,
 		"declaration": true,
-		"useUnknownInCatchVariables": false
+		"useUnknownInCatchVariables": false,
+		"skipLibCheck": true
 	},
 	"include": [
 		"src",
