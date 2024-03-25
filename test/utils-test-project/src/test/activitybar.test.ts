@@ -16,8 +16,7 @@
  */
 
 import { assert, expect } from "chai";
-import { ActivityBar } from 'vscode-uitests-tooling';
-import { ViewControl } from "vscode-extension-tester";
+import { ActivityBar, ViewControl } from 'vscode-uitests-tooling';
 
 describe('ActivityBar', function () {
     this.timeout(60000);
