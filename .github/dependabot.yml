@@ -1,14 +1,27 @@
 ---
 version: 2
 updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 3
+    labels:
+      - "SKIP-CHANGELOG"
+      - "DEPENDENCIES"
+    reviewers:
+      - djelinek
   - package-ecosystem: 'npm'
     directory: '/'
     schedule:
-      interval: 'weekly'
-    open-pull-requests-limit: 5
+      interval: 'daily'
     versioning-strategy: increase
-    ignore:
-       - dependency-name: "node"
-         update-types: ["version-update:semver-major"]
-       - dependency-name: "@types/node"
-         update-types: ["version-update:semver-major"]
+    reviewers:
+      - djelinek
+  - package-ecosystem: 'npm'
+    directory: '/test/utils-test-project'
+    schedule:
+      interval: 'daily'
+    versioning-strategy: increase
+    reviewers:
+      - djelinek
