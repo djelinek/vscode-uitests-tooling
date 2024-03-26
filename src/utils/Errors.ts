@@ -3,7 +3,7 @@ import { error } from "vscode-extension-tester";
 export type ErrorType = Function;
 
 /**
- * List of errors that are usually responsible for WebElement interactivity flakyness. 
+ * List of errors that are usually responsible for WebElement interactivity flakiness. 
  */
 export const INTERACTIVITY_ERRORS: ErrorType[] = [error.StaleElementReferenceError, error.NoSuchElementError, error.ElementNotInteractableError];
 

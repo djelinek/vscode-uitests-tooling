@@ -12,15 +12,24 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
+  main:
+    name: ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, macos-latest, windows-latest ]
+      fail-fast: false
+
+    env:
+      CODE_VERSION: max
+      TEST_RESOURCES: test-res
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 18.x
           cache: npm
@@ -28,28 +37,39 @@ jobs:
       - name: Install
         run: npm ci
 
-      - name: Build
-        run: npm run build
+      - name: Tests (macOS, windows)
+        if: matrix.os != 'ubuntu-latest'
+        run: |
+          npm test
 
-      - name: Compile
-        run: npm run compile
+      - name: Tests (linux)
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          xvfb-run --auto-servernum --server-args='-screen 0 1920x1080x24' npm test
+
+      - name: Upload Screenshots
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: screenshots-${{ matrix.os }}
+          path: ${{ github.workspace }}/test/**/screenshots/*.png
 
   check:
     if: always()
     runs-on: ubuntu-latest
     name: Status Check
-    needs: [ test ]
+    needs: [ main ]
     steps:
       - name: Print Test Result
         run: |
-          echo result = ${{ needs.test.result }}
+          echo result = ${{ needs.main.result }}
       - name: Status Check - success
-        if: ${{ needs.test.result == 'success' }}
+        if: ${{ needs.main.result == 'success' }}
         run: |
           echo "All tests successfully completed!"
           exit 0
       - name: Status Check - failure
-        if: ${{ needs.test.result != 'success' }}
+        if: ${{ needs.main.result != 'success' }}
         run: |
           echo "Status Check failed!"
           exit 1

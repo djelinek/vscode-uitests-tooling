@@ -35,12 +35,12 @@
 		"url": "https://github.com/djelinek/vscode-uitests-tooling.git"
 	},
 	"scripts": {
-		"vscode:prepublish": "npm install && npm run compile",
-		"prepack": "npm run build",
-		"compile": "tsc -p ./ && npm run lint",
-		"build": "tsc",
+		"vscode:prepublish": "npm run compile",
+		"compile": "rimraf out/ && tsc -p ./ && npm run lint",
 		"lint": "eslint src --ext .ts",
-		"dev": "npm install && npm run compile && npm run build && npm link"
+		"dev": "npm install && npm run compile && npm link",
+		"pretest": "npm run compile && npm install --prefix test/utils-test-project",
+		"test": "npm run ui-test --prefix test/utils-test-project"
 	},
 	"dependencies": {
 		"clipboardy": "^4.0.0",
@@ -50,16 +50,15 @@
 		"vscode-extension-tester": "^7.2.0"
 	},
 	"devDependencies": {
-		"@types/chai": "^4.3.11",
 		"@types/fs-extra": "^11.0.3",
 		"@types/mocha": "^10.0.6",
 		"@types/node": "^18.19.24",
 		"@typescript-eslint/eslint-plugin": "^7.2.0",
 		"chai": "^4.4.1",
-		"rimraf": "^5.0.5",
-		"typescript": "^5.3.3"
+		"rimraf": "^5.0.5"
 	},
 	"peerDependencies": {
-		"mocha": ">=5.2.0"
+		"mocha": ">=5.2.0",
+		"typescript": ">=4.6.2"
 	}
 }

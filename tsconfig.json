@@ -1,16 +1,15 @@
 {
 	"compilerOptions": {
 		"module": "Node16",
-		"target": "es6",
+		"target": "ES2022",
+		"rootDir": "src",
 		"outDir": "out",
 		"lib": [
-			"es6"
+			"ES2022"
 		],
 		"sourceMap": true,
-		"rootDir": "src",
 		"forceConsistentCasingInFileNames": true,
 		"strict": true,
-		"noUnusedLocals": true,
 		"noImplicitReturns": true,
 		"noImplicitAny": true,
 		"strictNullChecks": true,
@@ -18,17 +17,19 @@
 		"experimentalDecorators": true,
 		"resolveJsonModule": true,
 		"declaration": true,
-		"useUnknownInCatchVariables": false
+		"useUnknownInCatchVariables": false,
+		"skipLibCheck": true
 	},
 	"include": [
 		"src",
-		".eslintrc.js"
+		".eslintrc.json"
 	],
 	"exclude": [
 		"node_modules",
 		"resources",
 		"test-resources",
 		"test-extensions",
-		"test-project"
+		".vscode-test",
+		"out"
 	]
 }

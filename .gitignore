@@ -5,3 +5,6 @@ node_modules
 test-resources
 test-extensions
 .npmrc
+.vscode-test
+test/utils-test-project/package-lock.json
+test-res

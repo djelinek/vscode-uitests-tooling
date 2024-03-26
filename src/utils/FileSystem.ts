@@ -55,7 +55,7 @@ class FileSystem {
 	/**
 	 * It will revert changes made in currently opened file before save
 	 */
-	 public static async revertFileChanges(): Promise<void> {
+	public static async revertFileChanges(): Promise<void> {
 		await new Workbench().executeCommand('File: Revert File');
 	}
 
