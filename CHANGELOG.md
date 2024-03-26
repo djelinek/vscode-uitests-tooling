@@ -1,5 +1,13 @@
 # Change Log
 
+## 4.1.0
+
+> March 26 2024
+
+- Bump vscode-extension-tester from 7.2.0 to 7.3.2
+- Add test project to avoid breaking utils API
+- Bump package dependencies and devDependencies
+
 ## 4.0.12
 
 > February 28 2024
