@@ -1,5 +1,6 @@
 import { InputBox, QuickOpenBox, QuickPickItem } from "vscode-extension-tester";
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 interface InputTestProperties {
 	text?: string;
 	message?: string;

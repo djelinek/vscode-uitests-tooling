@@ -12,7 +12,7 @@ class StatusBar extends IStatusBar {
 	 * Get the name of Apache Camel LSP Status Bar item as text
 	 * Only works with an open editor
 	 */
-	public async getItemByID(id: string): Promise<String> {
+	public async getItemByID(id: string): Promise<string> {
 		return await new StatusBar().findElement(By.id(id)).getText();
 	}
 
@@ -20,7 +20,7 @@ class StatusBar extends IStatusBar {
 	 * Get the name of Apache Camel LSP Status Bar item as text
 	 * Only works with an open editor
 	 */
-	public async getLSPSupport(): Promise<String> {
+	public async getLSPSupport(): Promise<string> {
 		return await new StatusBar().findElement(By.id(this.LSP_BAR_ID)).getText();
 	}
 }

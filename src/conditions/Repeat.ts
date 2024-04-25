@@ -88,7 +88,7 @@ class RepeatManager {
 	}
 
 	abortAll(): void {
-		for (const [_, repeat] of this._repeats.entries()) {
+		for (const [_index, repeat] of this._repeats.entries()) {
 			repeat.abort(undefined);
 			this.remove(repeat);
 		}
@@ -342,8 +342,7 @@ export class Repeat<T> {
 		}
 		else if (this._usingExplicitLoopSignaling === false || this._finishedLoop) {
 			if (this.options?.ignoreLoopError) {
-				// @ts-expect-error
-				// output will be ignored
+				// @ts-expect-error: output will be ignored
 				this.resolve(undefined);
 			}
 			else {
