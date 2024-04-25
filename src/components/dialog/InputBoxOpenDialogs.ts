@@ -15,7 +15,7 @@ export class InputBoxOpenDialog extends InputBox implements IOpenDialog {
 		try {
 			oldClipboard = clipboardy.readSync();
 		}
-		catch (e) {
+		catch (e: any) {
 			console.warn(e.message);
 		}
 
