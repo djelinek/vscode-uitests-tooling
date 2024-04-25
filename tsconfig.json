@@ -1,28 +1,19 @@
 {
 	"compilerOptions": {
 		"module": "Node16",
+		"moduleResolution": "Node16",
 		"target": "ES2022",
-		"rootDir": "src",
-		"outDir": "out",
 		"lib": [
 			"ES2022"
 		],
-		"sourceMap": true,
-		"forceConsistentCasingInFileNames": true,
-		"strict": true,
-		"noImplicitReturns": true,
-		"noImplicitAny": true,
-		"strictNullChecks": true,
-		"noUnusedParameters": true,
-		"experimentalDecorators": true,
+		"outDir": "out",
 		"resolveJsonModule": true,
-		"declaration": true,
-		"useUnknownInCatchVariables": false,
-		"skipLibCheck": true
+		"strict": true,
+		"forceConsistentCasingInFileNames": true,
+		"skipLibCheck": true,
 	},
 	"include": [
 		"src",
-		".eslintrc.json"
 	],
 	"exclude": [
 		"node_modules",

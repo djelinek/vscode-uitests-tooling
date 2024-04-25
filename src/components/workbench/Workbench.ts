@@ -25,7 +25,7 @@ export class Workbench extends IWorkbench {
 					throw new OpenFolderPathError('There are not open folders in VS Code. Use Workbench.openFolder function first or try passing absolute path.');
 				}
 			}
-			catch (e) {
+			catch (e: any) {
 				if (e.name === 'NoSuchElementError' || e.message.includes('element is not attached to the page document')) {
 					return undefined;
 				}
@@ -54,7 +54,7 @@ export class Workbench extends IWorkbench {
 					return undefined;
 				}
 			}
-			catch (e) {
+			catch (e: any) {
 				if (e.name === 'NoSuchElementError' || e.message.includes('element is not attached to the page document')) {
 					return undefined;
 				}
@@ -190,7 +190,7 @@ async function parseTitleBar(): Promise<{ file: string | undefined; folder: stri
 				break;
 			}
 		}
-		catch (e) {
+		catch (e: any) {
 			if (e.message.includes('no such file or directory')) {
 				continue;
 			}
