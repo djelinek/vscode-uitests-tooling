@@ -35,18 +35,18 @@ describe('ActivityBar', function () {
 
         it('non existing control', async function () {
             try {
-                const item = await activityBar.getViewControl('abc', 5000);
+                const _item = await activityBar.getViewControl('abc', 5000);
             }
-            catch (e) {
+            catch (e: any) {
                 expect(e.toString()).contain('Could not find view control with name "abc"');
             }
         });
 
         it('zero timeout', async function () {
             try {
-                const control2 = await activityBar.getViewControl('Explorer', 0);
+                const _control2 = await activityBar.getViewControl('Explorer', 0);
             }
-            catch (e) {
+            catch (e: any) {
                 expect(e.toString()).contain("Cannot iterate more than 1 times.");
             }
         });

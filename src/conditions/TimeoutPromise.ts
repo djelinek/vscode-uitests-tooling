@@ -25,7 +25,7 @@ function captureStackTrace(limit: number = 50): any {
 	try {
 		Error.stackTraceLimit = limit;
 		// get call stack
-		let callStack: any = {};
+		const callStack: any = {};
 		Error.captureStackTrace(callStack, captureStackTrace);
 		return callStack.stack;
 	}
@@ -202,8 +202,7 @@ class TimeoutPromise<T> extends Promise<T> {
      */
 	static createFrom<T>(promise: Promise<T>, timeout?: number, options?: TimeoutPromiseOptions): TimeoutPromise<T> {
 		return new TimeoutPromise<T>((resolve, reject) => {
-			promise.then(resolve);
-			promise.catch(reject);
+			promise.then(resolve).catch(reject);
 		}, timeout, options);
 	}
 }

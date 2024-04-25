@@ -94,7 +94,7 @@ export module PathUtils {
 	 * @param bIsFile 
 	 * @returns 
 	 */
-	function compare(a: string[], b: string[], parentIndex: number, aIsFile: boolean, bIsFile: boolean): number {
+	export function compare(a: string[], b: string[], parentIndex: number, aIsFile: boolean, bIsFile: boolean): number {
 		if (isRoot(a) && isRoot(b)) {
 			return 0;
 		}
@@ -121,15 +121,15 @@ export module PathUtils {
 		}
 	}
 
-	function isRoot(a: string[]) {
+	export function isRoot(a: string[]) {
 		return a.length === 1 && a[0] === '/';
 	}
 
-	function isLeaf(a: string[], index: number): boolean {
+	export function isLeaf(a: string[], index: number): boolean {
 		return a.length === index + 1;
 	}
 
-	function isFile(a: string[], index: number, isFileFlag: boolean): boolean {
+	export function isFile(a: string[], index: number, isFileFlag: boolean): boolean {
 		return isLeaf(a, index) && isFileFlag;
 	}
 
