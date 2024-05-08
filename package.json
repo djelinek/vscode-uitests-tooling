@@ -50,7 +50,7 @@
 		"vscode-extension-tester": "^8.1.0"
 	},
 	"devDependencies": {
-		"@stylistic/eslint-plugin": "^1.8.0",
+		"@stylistic/eslint-plugin": "^1.8.1",
 		"@types/fs-extra": "^11.0.4",
 		"@types/mocha": "^10.0.6",
 		"@types/node": "^20.12.10",
