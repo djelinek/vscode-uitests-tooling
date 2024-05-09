@@ -1,5 +1,13 @@
 # Change Log
 
+## 4.1.2
+
+> May 09 2024
+
+- Bump vscode-extension-tester from 8.1.0 to 8.2.0
+- Bump package dependencies and devDependencies
+- Improved ESLint configuration
+
 ## 4.1.1
 
 > April 23 2024
