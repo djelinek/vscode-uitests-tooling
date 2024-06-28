@@ -47,7 +47,7 @@
 		"fs-extra": "^11.2.0",
 		"sanitize-filename": "^1.6.3",
 		"tree-kill": "^1.2.2",
-		"vscode-extension-tester": "^8.3.0"
+		"vscode-extension-tester": "^8.3.1"
 	},
 	"devDependencies": {
 		"@stylistic/eslint-plugin": "^2.3.0",
