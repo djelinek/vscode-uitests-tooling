@@ -1,5 +1,12 @@
 # Change Log
 
+## 4.1.4
+
+> July 23 2024
+
+- Bump vscode-extension-tester from 8.3.1 to 8.4.0
+- Bump package dependencies and devDependencies
+
 ## 4.1.3
 
 > June 28 2024
