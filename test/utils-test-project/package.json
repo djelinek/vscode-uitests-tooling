@@ -31,7 +31,7 @@
     "ui-test": "extest setup-and-run './out/test/**/*.test.js' -u -i -r ./resources -e ./test-extensions"
   },
   "devDependencies": {
-    "@types/chai": "^4.3.18",
+    "@types/chai": "^4.3.19",
     "@types/mocha": "^10.0.6",
     "@types/node": "^20.11.30",
     "@types/vscode": "^1.86.0",
