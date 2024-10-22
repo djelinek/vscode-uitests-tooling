@@ -1,6 +1,5 @@
 import { error } from "vscode-extension-tester";
 
-// eslint-disable-next-line @typescript-eslint/ban-types
 export type ErrorType = Function;
 
 /**
