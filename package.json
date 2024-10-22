@@ -37,7 +37,7 @@
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
 		"compile": "rimraf out/ && tsc -p ./ && npm run lint",
-		"lint": "eslint src --ext .ts",
+		"lint": "eslint src",
 		"dev": "npm install && npm run compile && npm link",
 		"pretest": "npm run compile && npm install --prefix test/utils-test-project",
 		"test": "npm run ui-test --prefix test/utils-test-project"
@@ -54,8 +54,9 @@
 		"@types/fs-extra": "^11.0.4",
 		"@types/mocha": "^10.0.8",
 		"@types/node": "^22.7.4",
-		"@typescript-eslint/eslint-plugin": "^7.18.0",
-		"eslint": "^8.57.1",
+		"@typescript-eslint/eslint-plugin": "^8.11.0",
+		"eslint": "^9.13.0",
+		"eslint-define-config": "^2.1.0",
 		"eslint-plugin-import": "^2.31.0",
 		"rimraf": "^6.0.1"
 	},

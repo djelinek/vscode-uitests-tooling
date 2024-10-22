@@ -27,7 +27,7 @@
     "vscode:prepublish": "npm run compile",
     "compile": "rimraf out/ && tsc -p ./ && npm run lint",
     "watch": "tsc -watch -p ./",
-    "lint": "eslint src --ext ts",
+    "lint": "eslint src",
     "ui-test": "extest setup-and-run './out/test/**/*.test.js' -u -i -r ./resources -e ./test-extensions"
   },
   "devDependencies": {
@@ -35,10 +35,10 @@
     "@types/mocha": "^10.0.6",
     "@types/node": "^20.11.30",
     "@types/vscode": "^1.86.0",
-    "@typescript-eslint/eslint-plugin": "^7.4.0",
-    "@typescript-eslint/parser": "^7.18.0",
+    "@typescript-eslint/eslint-plugin": "^8.11.0",
+    "@typescript-eslint/parser": "^8.11.0",
     "chai": "^4.5.0",
-    "eslint": "^8.57.0",
+    "eslint": "^9.13.0",
     "mocha": "^10.7.3",
     "rimraf": "^5.0.5",
     "typescript": "^5.6.2",
