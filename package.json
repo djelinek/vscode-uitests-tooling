@@ -1,7 +1,7 @@
 {
 	"name": "vscode-uitests-tooling",
 	"displayName": "UI tests Utils for Camel Tooling",
-	"description": "UI tests Utils for Camel Tooling extensions",
+	"description": "[Deprecated] UI tests Utils for Camel Tooling extensions",
 	"version": "4.1.9",
 	"author": "Dominik Jelinek",
 	"license": "Apache-2.0",
