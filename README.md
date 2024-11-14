@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  UI tests Utils for Camel Tooling
+  [Deprecated] UI tests Utils for Camel Tooling
 </h1>
 
 <p align="center">
