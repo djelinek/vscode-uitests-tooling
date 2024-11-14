@@ -53,7 +53,7 @@
 		"@stylistic/eslint-plugin": "^2.10.1",
 		"@types/fs-extra": "^11.0.4",
 		"@types/mocha": "^10.0.9",
-		"@types/node": "^22.8.7",
+		"@types/node": "^22.9.0",
 		"@typescript-eslint/eslint-plugin": "^8.12.2",
 		"eslint": "^9.14.0",
 		"eslint-define-config": "^2.1.0",
